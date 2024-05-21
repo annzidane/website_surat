@@ -1,0 +1,95 @@
+/* welcom  */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    padding-top: 100px; /* Menambahkan padding atas yang lebih besar untuk menghindari tertutupnya konten oleh header */
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  .container {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .surat-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .surat {
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+
+  .background {
+    background-color: blue;
+    padding: 20px; /* Tambahkan padding jika diperlukan */
+  }  
+  
+
+  #kontak-kami {
+    max-width: 800px; /* Lebar maksimum container */
+    margin: 0 auto; /* Mengatur agar container berada di tengah */
+    padding: 0 20px; /* Memberikan jarak di kanan dan kiri container */
+  }
+
+
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    width: 30%;
+  }
+  
+  .footer-column h4 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-column a {
+    color: #fff;
+    text-decoration: none;
+  }  
+  
+
+  

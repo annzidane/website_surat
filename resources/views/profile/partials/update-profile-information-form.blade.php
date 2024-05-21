@@ -27,24 +27,34 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
+        </div>
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                <div>
-                    <p class="text-sm mt-2 text-gray-800">
-                        {{ __('Your email address is unverified.') }}
+        <!-- NIK -->
+        <div>
+            <x-input-label for="nik" :value="__('NIK')" />
+            <x-text-input id="nik" name="nik" type="text" class="mt-1 block w-full" :value="old('nik', $user->nik)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('nik')" />
+        </div>
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
-                    </p>
+        <!-- Tanggal Lahir -->
+        <div>
+            <x-input-label for="tanggal_lahir" :value="__('Tanggal Lahir')" />
+            <x-text-input id="tanggal_lahir" name="tanggal_lahir" type="date" class="mt-1 block w-full" :value="old('tanggal_lahir', $user->tanggal_lahir)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('tanggal_lahir')" />
+        </div>
 
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
-                            {{ __('A new verification link has been sent to your email address.') }}
-                        </p>
-                    @endif
-                </div>
-            @endif
+        <!-- Alamat -->
+        <div>
+            <x-input-label for="alamat" :value="__('Alamat')" />
+            <textarea id="alamat" name="alamat" class="mt-1 block w-full" required>{{ old('alamat', $user->alamat) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('alamat')" />
+        </div>
+
+        <!-- Pekerjaan -->
+        <div>
+            <x-input-label for="pekerjaan" :value="__('Pekerjaan')" />
+            <x-text-input id="pekerjaan" name="pekerjaan" type="text" class="mt-1 block w-full" :value="old('pekerjaan', $user->pekerjaan)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('pekerjaan')" />
         </div>
 
         <div class="flex items-center gap-4">

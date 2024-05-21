@@ -22,7 +22,7 @@
                                 name="password"
                                 required autocomplete="current-password" />
                 <!-- Button to toggle password visibility -->
-                <button type="button" class="absolute inset-y-0 right-0 px-3 text-gray-400 focus:outline-none focus:text-indigo-500" onclick="togglePasswordVisibility()">
+                <button type="button" class="absolute right-0 px-3 text-gray-400 focus:outline-none focus:text-indigo-500 mx-auto" onclick="togglePasswordVisibility()">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M9 12h.01M19 12h.01" />
@@ -53,6 +53,10 @@
             </x-primary-button>
         </div>
     </form>
+
+    <div class="mt-4 text-sm">
+        <p>Belum punya akun? <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">Daftar disini</a>.</p>
+    </div>
 </x-guest-layout>
 
 <script>

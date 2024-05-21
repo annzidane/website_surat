@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // New columns
+            $table->string('nik')->nullable(); // Assuming NIK is a unique identifier
+            $table->date('tanggal_lahir'); // Assuming tanggal_lahir is a date
+            $table->text('alamat'); // Assuming alamat can be a longer text
+            $table->string('pekerjaan'); // Assuming pekerjaan is a string
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

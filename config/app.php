@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -123,4 +125,13 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // 'providers' => [
+    //     Barryvdh\DomPDF\ServiceProvider::class,
+    // ],
+    
+    // 'aliases' => [
+    //     'PDF' => Barryvdh\DomPDF\Facade::class,
+    // ],
+
+      
 ];

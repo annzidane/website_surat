@@ -4,6 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SuratController;
+use App\Http\Controllers\UsahaController;
+use App\Http\Controllers\PengajuanController;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,4 +30,23 @@ require __DIR__.'/auth.php';
 
 route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth','admin']);
 
-Route::get('/sidebar', [HomeController::class, 'sidebar']);
+Route::get('/admin/kematian', [HomeController::class, 'adminKematian'])->middleware(['auth', 'admin']);
+
+Route::patch('/surat/update/{id}', [HomeController::class, 'updateStatus'])->name('surat.updateStatus');
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/kematian/store', [SuratController::class, 'kematianStore'])->name('kematian.store');
+    Route::get('/kematian', [SuratController::class, 'kematian'])->name('kematian');
+    Route::get('/kematian/index', [SuratController::class, 'index'])->name('kematian.index');
+    Route::get('/kematian/cetak/{id}', [SuratController::class, 'cetak'])->name('kematian.cetak');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/usaha/store', [UsahaController::class, 'usahaStore'])->name('usaha.store');
+    Route::get('/usaha', [UsahaController::class, 'usaha'])->name('usaha');
+    Route::get('/usaha/index', [UsahaController::class, 'index'])->name('usaha.index');
+    Route::get('/usaha/cetak/{id}', [UsahaController::class, 'cetak'])->name('usaha.cetak');
+});

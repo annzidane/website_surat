@@ -18,11 +18,22 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->usertype != 'admin')
-        {
-            return redirect('/');
+        // Memeriksa apakah pengguna telah masuk dan memiliki peran admin
+        if (Auth::check() && Auth::user()->usertype == 'admin') {
+            return $next($request);
         }
-        
-        return $next($request);
+
+        // Jika tidak, arahkan pengguna ke halaman lain atau berikan respon yang sesuai
+        return redirect('/')->with('error', 'Unauthorized access');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        // Pastikan bahwa pengguna yang mencoba mengakses fitur ini adalah admin
+        if (auth()->user()->usertype !== 'admin') {
+            abort(403, 'Anda tidak diizinkan mengakses halaman ini.');
+        }
+
+        // Logika perubahan status seperti yang ditunjukkan di atas
     }
 }
