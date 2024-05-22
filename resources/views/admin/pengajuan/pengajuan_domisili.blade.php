@@ -1,16 +1,15 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Surat Kematian')
+@section('title', 'Surat Domisili')
 
 @section('contents')
     <div class="container">
-        <h1>Daftar Pengajuan Surat</h1>
+        <h1>Daftar Pengajuan Surat Domisili</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nama Pengaju</th>
-                    <th scope="col">Nama yang Meninggal</th>
                     <th scope="col">Tanggal Pengajuan</th>
                     <th scope="col">Status</th>
                     <th scope="col">Keterangan</th>
@@ -23,7 +22,6 @@
                 <tr>
                     <th scope="row">{{ $pengajuan->id }}</th>
                     <td>{{ $pengajuan->user->name }}</td>
-                    <td>{{ $pengajuan->nama }}</td>
                     <td>{{ $pengajuan->created_at->format('d/m/Y') }}</td>
                     <td>
                         @if($pengajuan->status == 'Selesai')
@@ -59,18 +57,6 @@
                                                     <p>{{ $pengajuan->nama }}</p>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Bin / Binti</label>
-                                                    <p>{{ $pengajuan->bin_binti }}</p>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">NIK</label>
-                                                    <p>{{ $pengajuan->nik }}</p>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Jenis Kelamin</label>
-                                                    <p>{{ $pengajuan->jenis_kelamin }}</p>
-                                                </div>
-                                                <div class="mb-3">
                                                     <label class="form-label">Tempat Lahir</label>
                                                     <p>{{ $pengajuan->tempat_lahir }}</p>
                                                 </div>
@@ -79,34 +65,22 @@
                                                     <p>{{ $pengajuan->tanggal_lahir }}</p>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Status Pernikahan</label>
-                                                    <p>{{ $pengajuan->status_pernikahan }}</p>
+                                                    <label class="form-label">NIK</label>
+                                                    <p>{{ $pengajuan->nik }}</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Pekerjaan</label>
-                                                    <p>{{ $pengajuan->pekerjaan }}</p>
+                                                    <label class="form-label">Jenis Kelamin</label>
+                                                    <p>{{ $pengajuan->jenis_kelamin }}</p>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Status Pernikahan</label>
+                                                    <p>{{ $pengajuan->status_pernikahan }}</p>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Alamat</label>
                                                     <p>{{ $pengajuan->alamat }}</p>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tanggal Meninggal</label>
-                                                    <p>{{ $pengajuan->tanggal_meninggal }}</p>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Jam Meninggal</label>
-                                                    <p>{{ $pengajuan->jam_meninggal }}</p>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tempat Meninggal</label>
-                                                    <p>{{ $pengajuan->tempat_meninggal }}</p>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Sebab Meninggal</label>
-                                                    <p>{{ $pengajuan->sebab_meninggal }}</p>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Berkas Persyaratan</label>
@@ -120,7 +94,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         @if($pengajuan->status == 'Selesai')
-                                            <a href="{{ route('kematian.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
+                                            <a href="{{ route('domisili.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
                                         @else
                                             <button type="button" class="btn btn-primary" disabled>Cetak</button>
                                         @endif

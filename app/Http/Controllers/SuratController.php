@@ -74,7 +74,8 @@ class SuratController extends Controller
 
         Log::info('Data saved for user ID: ' . auth()->id());
 
-        return redirect('/dashboard')->with('success', 'Data kematian berhasil disimpan.');
+        // Redirect atau berikan respons sesuai kebutuhan Anda
+        return redirect()->route('kematian.index')->with('success', 'Data berhasil disimpan.');
     }
 
     public function index()

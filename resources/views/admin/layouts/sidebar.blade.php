@@ -63,15 +63,15 @@
             </a>
         </li>
         <li class="nav-item hidden">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/usaha">
                 <i class="fas fa-fw fa-file-alt"></i>
-                <span>Surat Pengantar</span>
+                <span>Surat Usaha</span>
             </a>
         </li>
         <li class="nav-item hidden">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/domisili">
                 <i class="fas fa-fw fa-file-alt"></i>
-                <span>Surat Kelahiran</span>
+                <span>Surat Domisili</span>
             </a>
         </li>
 

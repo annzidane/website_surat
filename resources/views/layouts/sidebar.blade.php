@@ -7,17 +7,21 @@
     <style>
         #dropdown-user {
             position: absolute;
-            top: calc(100% + 10px); /* Sesuaikan jarak dari navbar */
+            top: calc(100% + 10px);
             right: 0;
-            z-index: 10; /* Pastikan nilai ini lebih tinggi dari elemen lain di halaman */
+            z-index: 10;
         }
 
         /* Tambahan CSS agar tetap terlihat */
         #dropdown-user.hidden {
             display: none;
         }
+
+        /* Tambahan CSS untuk dropdown riwayat */
+        #riwayat-list.hidden {
+            display: none;
+        }
     </style>
-    @vite('resources/css/app.css')
 </head>
 <body>
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -77,6 +81,7 @@
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
+            <!-- Menu utama -->
             <li>
                 <a href="/dashboard" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -86,56 +91,77 @@
                     <span class="ms-3">Dashboard</span>
                 </a>
             </li>
+
+            <!-- Tombol Riwayat -->
             <li>
-                <a href="/kematian/index" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                        <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286C10 17.169 10.831 18 11.857 18h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="riwayat-list" id="riwayat-button">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
                     </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Pengajuan</span>
-                </a>
-            </li>
-            <li>
-                <a href="/riwayat" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 18">
-                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Riwayat</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                     </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Riwayat</span>
-                </a>
+                </button>
+                <ul id="riwayat-list" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="/kematian/index" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Surat Keterangan Kematian</a>
+                    </li>
+                    <li>
+                        <a href="/usaha/index" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Surat Keterangan Usaha</a>
+                    </li>
+                    <li>
+                        <a href="/domisili/index" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Surat Keterangan Domisili</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
 </aside>
 
-   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-         const userMenuButton = document.getElementById('user-menu-button');
-         const dropdownUser = document.getElementById('dropdown-user');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userMenuButton = document.getElementById('user-menu-button');
+        const dropdownUser = document.getElementById('dropdown-user');
 
-         userMenuButton.addEventListener('click', function() {
-               dropdownUser.classList.toggle('hidden');
-         });
+        userMenuButton.addEventListener('click', function() {
+            dropdownUser.classList.toggle('hidden');
+        });
 
-         const sidebarToggle = document.getElementById('sidebar-toggle');
-         const logoSidebar = document.getElementById('logo-sidebar');
-         const overlay = document.getElementById('overlay');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const logoSidebar = document.getElementById('logo-sidebar');
+        const overlay = document.getElementById('overlay');
 
-            // Fungsi untuk membuka dan menutup sidebar
-            function toggleSidebar() {
-                logoSidebar.classList.toggle('translate-x-0'); // Toggle class untuk menampilkan/menyembunyikan sidebar
-                overlay.classList.toggle('hidden'); // Toggle class untuk menampilkan/menyembunyikan overlay
-            }
+        // Fungsi untuk membuka dan menutup sidebar
+        function toggleSidebar() {
+            logoSidebar.classList.toggle('translate-x-0'); // Toggle class untuk menampilkan/menyembunyikan sidebar
+            overlay.classList.toggle('hidden'); // Toggle class untuk menampilkan/menyembunyikan overlay
+        }
 
-            // Event listener untuk toggle sidebar saat tombol diklik
-            sidebarToggle.addEventListener('click', function() {
-                toggleSidebar();
+        // Event listener untuk toggle sidebar saat tombol diklik
+        sidebarToggle.addEventListener('click', function() {
+            toggleSidebar();
+        });
+        const riwayatButton = document.getElementById('riwayat-button');
+        const riwayatList = document.getElementById('riwayat-list');
+
+        // Fungsi untuk menampilkan atau menyembunyikan submenu "Riwayat"
+        function toggleRiwayatMenu() {
+            riwayatList.classList.toggle('hidden');
+        }
+
+        // Event listener untuk tombol "Riwayat"
+        riwayatButton.addEventListener('click', function() {
+            toggleRiwayatMenu();
+        });
+
+        // Event listener untuk menutup submenu saat salah satu opsi dalam submenu diklik
+        riwayatList.querySelectorAll('a').forEach(function(item) {
+            item.addEventListener('click', function() {
+                toggleRiwayatMenu();
             });
-
-            // Event listener untuk menutup sidebar saat overlay diklik
-            overlay.addEventListener('click', function() {
-                toggleSidebar();
-            });
-      });
-      
-   </script>
+        });
+    });
+</script>
 </body>
 </html>

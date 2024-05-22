@@ -63,14 +63,14 @@
       <a href="/usaha" class="rounded-lg border-[1px] border-red-400 hover:bg-red-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
     </section>
     <section class="border-t-4 rounded-md px-4 py-6 flex flex-col gap-12 items-center border-b-8 border-yellow-400">
-      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Keterangan Kematian</h1>
+      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Pernyataan Nikah</h1>
       <p>icon</p>
-      <a href="/kematian" class="rounded-lg border-[1px] border-yellow-400 hover:bg-yellow-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
+      <a href="/nikah" class="rounded-lg border-[1px] border-yellow-400 hover:bg-yellow-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
     </section>
     <section class="border-t-4 rounded-md px-4 py-6 flex flex-col gap-12 items-center border-b-8 border-blue-400">
-      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Keterangan Kematian</h1>
+      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Keterangan Domisili</h1>
       <p>icon</p>
-      <a href="/kematian" class="rounded-lg border-[1px] border-blue-400 hover:bg-blue-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
+      <a href="/domisili" class="rounded-lg border-[1px] border-blue-400 hover:bg-blue-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
     </section>
 </div>
   </x-app-layout>
