@@ -21,7 +21,8 @@ class Domisili extends Model
         'status_pernikahan', 
         'alamat_ktp', 
         'keterangan_domisili',
-        'berkas_persyaratan', 
+        'berkas_ktp', 
+        'berkas_pengantar_RT',
         'status', 
         'keterangan', 
         'nomor_surat'

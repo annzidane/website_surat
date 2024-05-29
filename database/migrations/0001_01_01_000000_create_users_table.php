@@ -23,9 +23,10 @@ return new class extends Migration
 
             // New columns
             $table->string('nik')->nullable(); // Assuming NIK is a unique identifier
-            $table->date('tanggal_lahir'); // Assuming tanggal_lahir is a date
-            $table->text('alamat'); // Assuming alamat can be a longer text
-            $table->string('pekerjaan'); // Assuming pekerjaan is a string
+            $table->date('tanggal_lahir')->nullable(); // Assuming tanggal_lahir is a date
+            $table->text('alamat')->nullable(); // Assuming alamat can be a longer text
+            $table->string('pekerjaan')->nullable(); // Assuming pekerjaan is a string
+            $table->string('foto')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

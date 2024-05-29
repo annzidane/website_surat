@@ -20,7 +20,7 @@
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="px-6 py-4">{{ $index + 1 }}</td>
                                 <td class="px-6 py-4">{{ $item->created_at->format('d/m/Y') }}</td>
-                                <td class="px-6 py-4">Surat Usaha</td>
+                                <td class="px-6 py-4">Surat Keterangan Usaha</td>
                                 <td class="px-6 py-4">{{ $item->user->name }}</td>
                                 <td class="px-6 py-4">{{ $item->status }}</td>
                                 <td class="px-6 py-4">{{ $item->keterangan }}</td>
@@ -42,10 +42,18 @@
                 <template x-if="showPopup">
                     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                         <div class="bg-white rounded-lg p-6 w-full max-w-md mx-auto">
-                            <h2 class="text-xl font-semibold mb-4">Detail Surat Usaha</h2>
+                            <h2 class="text-xl font-semibold mb-4">Detail Surat Keterangan Usaha</h2>
                             <div class="mb-4">
                                 <label class="block font-medium text-gray-700">Nama</label>
                                 <p x-text="selectedData.nama" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block font-medium text-gray-700">Usaha</label>
+                                <p x-text="selectedData.usaha" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block font-medium text-gray-700">Nomor surat</label>
+                                <p x-text="selectedData.nomor_surat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                             </div>
                             <!-- Add more fields as needed -->
                             <div class="mt-6 text-right space-x-2">

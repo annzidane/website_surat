@@ -23,7 +23,8 @@ return new class extends Migration
             $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Cerai Mati', 'Cerai Hidup']);
             $table->text('alamat_ktp');
             $table->text('keterangan_domisili')->default('belum ada');
-            $table->string('berkas_persyaratan');
+            $table->string('berkas_ktp');
+            $table->string('berkas_pengantar_RT');
             $table->enum('status', ['Data Sedang Diperiksa', 'Penandatanganan', 'Selesai', 'Ditolak'])->default('Data Sedang Diperiksa');
             $table->string('keterangan')->default('Menunggu Konfirmasi');
             $table->string('nomor_surat')->default('belum ada');

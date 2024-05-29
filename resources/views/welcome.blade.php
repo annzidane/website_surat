@@ -4,8 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="/images" href="/image/logo_sambeng.png">
+    <title>Surat Desa</title>
     @vite('resources/css/app.css')
+    <style>
+        #desa-sambeng {
+            position: relative;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.9; /* Optional: adjust the opacity of the video */
+        }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 5px 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -48,43 +115,203 @@
 
     <main>
         <!-- Foto background dengan tulisan "Desa Sambeng" -->
-        <div id="desa-sambeng" class="background min-h-[70vh] grid place-items-center text-gray-900 bg-blue-500 ">
-            <section>
-                <h2 class="text-3xl mb-4">KANTOR KELURAHAN DESA SAMBENG</h2>
-                <p class="text-lg">Selamat Datang di KANTOR KELURAHAN DESA SAMBENG</p>
-                <a href="/login" class="text-black-500">Masuk</a> <!-- Mengganti "Login" menjadi "Masuk" -->
+        <div id="desa-sambeng" class="background min-h-[70vh] grid place-items-center text-white relative">
+            <video autoplay muted loop id="background-video" class="absolute inset-0 w-full h-full object-cover">
+                <source src="/videos/background_angkasa.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <section class="relative z-10 text-center">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">KANTOR KELURAHAN DESA SAMBENG</h2>
+                <p class="text-lg md:text-xl lg:text-2xl">Selamat Datang di KANTOR KELURAHAN DESA SAMBENG</p>
+                <a href="/login" class="text-black bg-white py-2 px-4 rounded-lg mt-4 inline-block">Buat Surat</a> <!-- Mengganti "Login" menjadi "Masuk" -->
             </section>
         </div>
 
+
+
         <!-- Container untuk layanan surat -->
-        <div id="layanan-surat" class="background min-h-[70vh] grid place-items-center bg-gray-100">
-            <h3 class="text-xl font-bold mb-4">Layanan Surat</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md text-center">
-                    <svg class="w-10 h-10 text-blue-500 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h4M8 12H4m6 4h8m-8 0a4 4 0 010-8h8a4 4 0 110 8h-8zM16 12H8M8 12a4 4 0 100-8h8a4 4 0 100-8H8a4 4 0 000 8h8z" />
-                    </svg>
-                    <h4 class="text-lg font-bold mb-2">Surat Keterangan Kelahiran</h4>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded mb-2">Lihat Persyaratan</button>
-                    <button class="bg-green-500 text-white px-4 py-2 rounded">Buat Surat</button>
-                </div>
-                <!-- Add more containers for other types of documents -->
-                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md text-center">
-                    <svg class="w-10 h-10 text-blue-500 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h4 class="text-lg font-bold mb-2">Surat Keterangan Kematian</h4>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded mb-2">Lihat Persyaratan</button>
-                    <button class="bg-green-500 text-white px-4 py-2 rounded">Buat Surat</button>
-                </div>
+    <div id="layanan-surat" class="min-h-screen flex flex-col items-center justify-center py-10 px-6">
+        <h3 class="text-3xl font-bold mb-10 text-gray-800">Layanan Surat</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            
+            <!-- Surat Keterangan Kelahiran -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-baby text-green-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Keterangan Kelahiran</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalKelahiran')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Keterangan Kematian -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-skull text-red-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Keterangan Kematian</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalKematian')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Keterangan Usaha -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-briefcase text-yellow-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Keterangan Usaha</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalUsaha')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Pengantar Nikah -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-ring text-indigo-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Pengantar Nikah</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalNikah')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Keterangan Domisili -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-home text-purple-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Keterangan Domisili</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalDomisili')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Permohonan Pindah Datang WNI -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-plane-departure text-pink-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Permohonan Pindah Datang WNI</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalPindah')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Pembuatan Kartu Keluarga -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-id-card text-blue-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Pembuatan Kartu Keluarga</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalKK')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+            </div>
+
+            <!-- Surat Keterangan Tidak Mampu -->
+            <div class="p-8 bg-white dark:bg-gray-200 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 text-center">
+                <i class="fas fa-hand-holding-usd text-orange-500 text-6xl mb-4"></i>
+                <h4 class="text-xl font-bold mb-4">Surat Keterangan Tidak Mampu</h4>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalTidakMampu')">Lihat Persyaratan</button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
         </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modalKelahiran" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalKelahiran')">&times;</span>
+            <h2>Persyaratan Surat Keterangan Kelahiran</h2>
+            <ul>
+                <li>Fotokopi KTP orang tua</li>
+                <li>Fotokopi KK</li>
+                <li>Surat keterangan lahir dari rumah sakit</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalKematian" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalKematian')">&times;</span>
+            <h2>Persyaratan Surat Keterangan Kematian</h2>
+            <ul>
+                <li>Fotokopi KTP orang yang meninggal</li>
+                <li>Fotokopi KK</li>
+                <li>Surat keterangan kematian dari rumah sakit</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalUsaha" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalUsaha')">&times;</span>
+            <h2>Persyaratan Surat Keterangan Usaha</h2>
+            <ul>
+                <li>Fotokopi KTP pemilik usaha</li>
+                <li>Fotokopi KK</li>
+                <li>Surat pengantar dari RT/RW</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalNikah" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalNikah')">&times;</span>
+            <h2>Persyaratan Surat Pengantar Nikah</h2>
+            <ul>
+                <li>Fotokopi KTP kedua mempelai</li>
+                <li>Fotokopi KK kedua mempelai</li>
+                <li>Surat pengantar dari RT/RW</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalDomisili" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalDomisili')">&times;</span>
+            <h2>Persyaratan Surat Keterangan Domisili</h2>
+            <ul>
+                <li>Fotokopi KTP</li>
+                <li>Fotokopi KK</li>
+                <li>Surat pengantar dari RT/RW</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalPindah" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalPindah')">&times;</span>
+            <h2>Persyaratan Surat Permohonan Pindah Datang WNI</h2>
+            <ul>
+                <li>Fotokopi KTP</li>
+                <li>Fotokopi KK</li>
+                <li>Surat pengantar dari RT/RW</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalKK" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalKK')">&times;</span>
+            <h2>Persyaratan Surat Pembuatan Kartu Keluarga</h2>
+            <ul>
+                <li>Fotokopi KTP suami dan istri</li>
+                <li>Fotokopi akta nikah</li>
+                <li>Surat pengantar dari RT/RW</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalTidakMampu" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalTidakMampu')">&times;</span>
+            <h2>Persyaratan Surat Keterangan Tidak Mampu</h2>
+            <ul>
+                <li>Fotokopi KTP</li>
+                <li>Fotokopi KK</li>
+                <li>Surat pengantar dari RT/RW</li>
+                <li>Dan lain-lain...</li>
+            </ul>
+        </div>
+    </div>
+
+
 
         <!-- Prosedur pengajuan surat -->
-        <div id="prosedur-pengajuan-surat" class="background min-h-[70vh] grid place-items-center bg-gray-200">
-            <h3 class="text-xl font-bold mb-4">Prosedur Pengajuan Surat</h3>
-            <div class="max-w-screen-md mx-auto p-4 bg-white dark:bg-white rounded-lg shadow-md">
-                <ol class="list-decimal list-inside space-y-4 text-left">
+        <div id="prosedur-pengajuan-surat" class="min-h-[70vh] flex flex-col items-center justify-center py-10 bg-gray-200">
+            <h3 class="text-3xl font-bold mb-6 text-gray-800">Prosedur Pengajuan Surat</h3>
+            <div class="max-w-screen-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+                <ol class="list-decimal list-inside space-y-4 text-left text-lg leading-relaxed">
                     <li>
                         <strong>Login atau Daftar:</strong> Jika Anda sudah memiliki akun, silakan login. Jika belum, lakukan pendaftaran terlebih dahulu.
                     </li>
@@ -112,57 +339,62 @@
 
         <!-- Jadwal layanan -->
         <div id="jadwal-pelayanan" class="background min-h-[70vh] grid place-items-center bg-gray-300">
-            <h3 class="text-xl font-bold mb-4">Jadwal Pelayanan</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md">
+            <h3 class="text-3xl font-bold mb-4">Jadwal Pelayanan</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center mx-10"> <!-- Perubahan pada bagian margin horizontal -->
+                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex items-center justify-center mb-2">
                         <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
+                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
                         </svg>
                     </div>
                     <h4 class="text-lg font-bold">Senin</h4>
                     <p>07:00 - 12:00</p>
                 </div>
-                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md">
+                <!-- Hari Selasa -->
+                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex items-center justify-center mb-2">
                         <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
+                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
                         </svg>
                     </div>
                     <h4 class="text-lg font-bold">Selasa</h4>
                     <p>07:00 - 12:00</p>
                 </div>
-                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md">
+                <!-- Hari Rabu -->
+                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex items-center justify-center mb-2">
                         <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25A8.259 8.259 0 0 1 12 20.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
+                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
                         </svg>
                     </div>
                     <h4 class="text-lg font-bold">Rabu</h4>
                     <p>07:00 - 12:00</p>
                 </div>
-                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md">
+                <!-- Hari Kamis -->
+                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex items-center justify-center mb-2">
                         <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
+                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
                         </svg>
                     </div>
                     <h4 class="text-lg font-bold">Kamis</h4>
                     <p>07:00 - 12:00</p>
                 </div>
-                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md">
+                <!-- Hari Jumat -->
+                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex items-center justify-center mb-2">
                         <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
+                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
                         </svg>
                     </div>
                     <h4 class="text-lg font-bold">Jumat</h4>
                     <p>07:00 - 12:00</p>
                 </div>
-                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md">
+                <!-- Hari Sabtu -->
+                <div class="p-4 bg-white dark:bg-white rounded-lg shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex items-center justify-center mb-2">
                         <svg class="w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
+                            <path d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.26 8.26 0 0 1-8.25 8.25zm0-12.5a.75.75 0 0 1 .75.75v4.75h3.5a.75.75 0 0 1 0 1.5h-4.25a.75.75 0 0 1-.75-.75v-5.5a.75.75 0 0 1 .75-.75z"/>
                         </svg>
                     </div>
                     <h4 class="text-lg font-bold">Sabtu</h4>
@@ -173,18 +405,33 @@
 
         <!-- Kontak Kami -->
         <div id="kontak-kami" class="background bg-gray-100 min-h-[70vh] grid place-items-center">
-            <div class="max-w-screen-md mx-auto p-4 bg-white dark:bg-gray-000 rounded-lg shadow-md mb-6 mt-6">
-            <h3 class="text-xl font-bold mb-4 text-center">Kontak Kami</h3>
-            <ul>
-                <li>Email: example@example.com</li>
-                <li>No. WhatsApp: 123456789</li>
-                <li>Alamat: Jl. Contoh No. 123, Desa Sambeng</li>
-            </ul>
-            <!-- Tampilkan peta di sini -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.477569451014!2d109.3516551!3d-7.049691599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fe948842ece57%3A0x26ea05417e1aaf60!2sBalai%20Desa%20Sambeng!5e0!3m2!1sen!2sid!4v1648921927380!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
+            <div class="bg-white shadow-lg rounded-lg px-6 py-8 border-t-4 border-b-8 border-blue-500 m-6 w-full max-w-4xl">
+                <h3 class="text-3xl font-bold mb-4 text-center">Kontak Kami</h3>
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-blue-500 mr-2"></i>
+                        Email: <a href="mailto:example@example.com" class="ml-2 text-blue-500 hover:underline">example@example.com</a>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fab fa-whatsapp text-blue-500 mr-2"></i>
+                        No. WhatsApp: <a href="tel:123456789" class="ml-2 text-blue-500 hover:underline">123456789</a>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
+                        Alamat: <span class="ml-2">Jl. Contoh No. 123, Desa Sambeng</span>
+                    </li>
+                </ul>
+                <!-- Tampilkan peta di sini -->
+                <div class="mt-6 flex justify-center">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.477569451014!2d109.3516551!3d-7.049691599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fe948842ece57%3A0x26ea05417e1aaf60!2sBalai%20Desa%20Sambeng!5e0!3m2!1sen!2sid!4v1648921927380!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
+
+<!-- Tambahkan link ke Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
     </main>
 
     <footer class="bg-white shadow dark:bg-gray-900">
@@ -234,6 +481,22 @@
                 smoothScroll(targetId, 80); // Panggil fungsi smoothScroll dengan id target dan offset 80px
             });
         });
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
     </script>
 </body>
 

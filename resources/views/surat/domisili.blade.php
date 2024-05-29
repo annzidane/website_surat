@@ -36,7 +36,8 @@
                     <!-- NIK -->
                     <div class="mb-4">
                         <label for="nik" class="block font-medium text-gray-700">NIK *</label>
-                        <input type="text" id="nik" name="nik" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('nik') }}">
+                        <input type="text" id="nik" name="nik" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('nik') }}" maxlength="16" pattern="\d{16}" required>
+                        <span id="nikError" class="text-red-600"></span>
                         @error('nik')
                             <span class="text-red-600">{{ $message }}</span>
                         @enderror
@@ -75,8 +76,8 @@
                             <option value="" disabled selected>-- PILIH STATUS PERNIKAHAN --</option>
                             <option value="Belum Menikah" {{ old('status_pernikahan') == 'Belum Menikah' ? 'selected' : '' }}>Belum Menikah</option>
                             <option value="Menikah" {{ old('status_pernikahan') == 'Menikah' ? 'selected' : '' }}>Menikah</option>
-                            <option value="Duda" {{ old('status_pernikahan') == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
-                            <option value="Janda" {{ old('status_pernikahan') == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
+                            <option value="Cerai Mati" {{ old('status_pernikahan') == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
+                            <option value="Cerai Hidup" {{ old('status_pernikahan') == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
                         </select>
                         @error('status_pernikahan')
                             <span class="text-red-600">{{ $message }}</span>
@@ -92,22 +93,32 @@
                         @enderror
                     </div>
 
-                    <!-- Berkas Persyaratan -->
+                    <!-- Berkas KTP -->
                     <div class="mb-4">
-                        <label for="berkas_persyaratan" class="block font-medium text-gray-700">Berkas Persyaratan *</label>
-                        <input type="file" id="berkas_persyaratan" name="berkas_persyaratan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        @error('berkas_persyaratan')
+                        <label for="berkas_ktp" class="block font-medium text-gray-700">Berkas KTP *</label>
+                        <input type="file" id="berkas_ktp" name="berkas_ktp" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        @error('berkas_ktp')
                             <span class="text-red-600">{{ $message }}</span>
                         @enderror
                     </div>
 
-                </div> <!-- End grid-cols-2 -->
+                    <!-- Berkas Pengantar RT -->
+                    <div class="mb-4">
+                        <label for="berkas_pengantar_RT" class="block font-medium text-gray-700">Berkas Pengantar RT *</label>
+                        <input type="file" id="berkas_pengantar_RT" name="berkas_pengantar_RT" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        @error('berkas_pengantar_RT')
+                            <span class="text-red-600">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                <!-- Submit Button -->
-                <div class="mt-4 flex justify-center">
+                    </div> <!-- End grid-cols-2 -->
+
+                    <!-- Submit Button -->
+                    <div class="mt-4 flex justify-center">
                     <button type="submit" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
                 </div>
             </form>
         </div>
     </div>
 </x-app-layout>
+

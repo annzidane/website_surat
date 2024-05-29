@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar with Dropdown Menu</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .sidebar .nav-item .nav-link {
             color: #fff;
@@ -15,13 +17,14 @@
         .sidebar .nav-item.hidden {
             display: none;
         }
+
     </style>
 </head>
 <body>
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand sticky d-flex align-items-center justify-content-center" href="dashboard">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -41,9 +44,9 @@
 
         <!-- Nav Item - Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="/admin/profile">
+            <a class="nav-link" href="/admin/users">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Profile</span>
+                <span>Users</span>
             </a>
         </li>
 
@@ -59,19 +62,37 @@
         <li class="nav-item hidden">
             <a class="nav-link" href="/admin/kematian">
                 <i class="fas fa-fw fa-file-alt"></i>
-                <span>Surat Kematian</span>
+                <span>Surat Keterangan Kematian</span>
             </a>
         </li>
         <li class="nav-item hidden">
             <a class="nav-link" href="/admin/usaha">
                 <i class="fas fa-fw fa-file-alt"></i>
-                <span>Surat Usaha</span>
+                <span>Surat Keterangan Usaha</span>
             </a>
         </li>
         <li class="nav-item hidden">
             <a class="nav-link" href="/admin/domisili">
                 <i class="fas fa-fw fa-file-alt"></i>
-                <span>Surat Domisili</span>
+                <span>Surat Keterangan Domisili</span>
+            </a>
+        </li>
+        <li class="nav-item hidden">
+            <a class="nav-link" href="/admin/kelahiran">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Surat Keterangan Kelahiran</span>
+            </a>
+        </li>
+        <li class="nav-item hidden">
+            <a class="nav-link" href="/admin/pindah">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Surat Keterangan Pindah</span>
+            </a>
+        </li>
+        <li class="nav-item hidden">
+            <a class="nav-link" href="/admin/sktm">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Surat Keterangan Tidak Mampu</span>
             </a>
         </li>
 

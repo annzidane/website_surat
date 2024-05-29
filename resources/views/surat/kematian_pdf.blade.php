@@ -1,90 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Keterangan Kematian</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        .header, .footer {
-            text-align: center;
-        }
-        .content {
-            margin: 0 auto;
-            width: 80%;
-        }
-        .list {
-            list-style-type: none;
-            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12px;
             margin: 0;
+            padding: 0;
+            text-align: left;
         }
-        .list-item {
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .nomor {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-weight: bold;
             margin-bottom: 10px;
         }
-        .list-item strong {
-            font-weight: bold;
+
+        th, td {
+            text-align: left;
+            padding: 8px;
         }
-        .footer {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            margin-bottom: 20px;
-            margin-right: 20px;
+
+        .signature {
+            margin-top: 10px;
+            text-align: right;
         }
-        #camat{
-            text-align:center;
+
+        .signature div {
+            margin-bottom: 10px;
         }
-        #nama-camat{
-            margin-top:100px;
-            text-align:center;
-        }
-        .row{
-            margin-top: 20px;
+
+        .right-align {
+            text-align: right;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>SURAT KETERANGAN KEMATIAN</h1>
-        <p>Nomor : ..................</p>
-    </div>
+    @php
+        use Carbon\Carbon;
+    @endphp
+    <div class="container">
+        <div class="title">SURAT KETERANGAN KEMATIAN</div>
+        <div class="nomor">NOMOR: {{ $data->nomor_surat }}</div>
 
-    <div class="content">
-        <p>Yang bertanda tangan di bawah ini Kepala Desa .................. Kecamatan .................. .................. menerangkan dengan sebenarnya, bahwa :</p>
-        <ul class="list">
-            <li class="list-item"><strong>Nama:</strong> {{ $data->nama }}</li>
-            <li class="list-item"><strong>Bin / Binti:</strong> {{ $data->bin_binti }}</li>
-            <li class="list-item"><strong>NIK:</strong> {{ $data->nik }}</li>
-            <li class="list-item"><strong>Jenis Kelamin:</strong> {{ $data->jenis_kelamin }}</li>
-            <li class="list-item"><strong>Tempat/Tanggal Lahir:</strong> {{ $data->tempat_lahir }} / {{ $data->tanggal_lahir }}</li>
-            <li class="list-item"><strong>Status Pernikahan:</strong> {{ $data->status_pernikahan }}</li>
-            <li class="list-item"><strong>Pekerjaan:</strong> {{ $data->pekerjaan }}</li>
-            <li class="list-item"><strong>Alamat:</strong> {{ $data->alamat }}</li>
-            <li class="list-item"><strong>Telah Meninggal Dunia pada:</strong></li>
-            <li class="list-item">- <strong>Tanggal:</strong> {{ $data->tanggal_meninggal }}</li>
-            <li class="list-item">- <strong>Jam:</strong> {{ $data->jam_meninggal }}</li>
-            <li class="list-item"><strong>Tempat Meninggal:</strong> {{ $data->tempat_meninggal }}</li>
-            <li class="list-item"><strong>Sebab Kematian:</strong> {{ $data->sebab_meninggal }}</li>
-            
-        </ul>
+        <div class="section">
+            <div class="section-title">Data Almarhum/Almarhumah:</div>
+            <table>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <td>{{ $data->nama }}</td>
+                </tr>
+                <tr>
+                    <th>NIK</th>
+                    <td>{{ $data->nik }}</td>
+                </tr>
+                <tr>
+                    <th>Jenis Kelamin</th>
+                    <td>{{ $data->jenis_kelamin }}</td>
+                </tr>
+                <tr>
+                    <th>Tempat, Tanggal Lahir</th>
+                    <td>{{ $data->tempat_lahir }}, {{ Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Umur</th>
+                    <td>{{ $data->umur }}</td>
+                </tr>
+                <tr>
+                    <th>Agama</th>
+                    <td>{{ $data->agama }}</td>
+                </tr>
+                <tr>
+                    <th>Status Perkawinan</th>
+                    <td>{{ $data->status_pernikahan }}</td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>{{ $data->alamat }}</td>
+                </tr>
+            </table>
+        </div>
 
-        <p>Surat Keterangan ini dibuat untuk Keamanan.</p>
-        <p>Demikian surat keterangan ini dibuat, atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>
+        <div class="section">
+            <div class="section-title">Telah Meninggal Dunia Pada:</div>
+            <table>
+                <tr>
+                    <th>Hari</th>
+                    <td>{{ $data->hari_meninggal }}</td>
+                </tr>
+                <tr>
+                    <th>Tanggal</th>
+                    <td>{{ Carbon::parse($data->tanggal_meninggal)->translatedFormat('d F Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Bertempat di</th>
+                    <td>{{ $data->tempat_meninggal }}</td>
+                </tr>
+                <tr>
+                    <th>Penyebab Kematian</th>
+                    <td>{{ $data->sebab_meninggal }}</td>
+                </tr>
+            </table>
+        </div>
 
-        <div id="ttd" class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-              <p id="camat"><strong>CAMAT BERGAS</strong></p>
-              <div id="nama-camat">
-                <br />
-                <br />
-                <strong><u>TRI MARTONO, SH, MM</u></strong><br />
-                    Pembina Tk. I<br />
-                    NIP. 196703221995031001
-                </div>
-            </div>
+        <div class="section">
+            <div class="section-title">Surat Keterangan Ini Dibuat Berdasarkan Keterangan Pelapor:</div>
+            <table>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <td>{{ $data->nama_pelapor }}</td>
+                </tr>
+                <tr>
+                    <th>NIK</th>
+                    <td>{{ $data->nik_pelapor }}</td>
+                </tr>
+                <tr>
+                    <th>Tanggal Lahir</th>
+                    <td>{{ Carbon::parse($data->tanggal_lahir_pelapor)->translatedFormat('d F Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Pekerjaan</th>
+                    <td>{{ $data->pekerjaan_pelapor }}</td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>{{ $data->alamat_pelapor }}</td>
+                </tr>
+                <tr>
+                    <th>Hubungan Pelapor</th>
+                    <td>{{ $data->hubungan_pelapor }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="signature">
+            <div>Sambeng, {{ Carbon::parse($data->updated_at)->translatedFormat('d F Y') }}</div>
+            <div>Kepala Desa Sambeng</div>
+            <span></span>
+            <span></span>
+            <div>Slamet Khasani</div>
         </div>
     </div>
 </body>

@@ -22,7 +22,9 @@ class Usaha extends Model
         'usaha', 
         'lokasi', 
         'lama_usaha', 
-        'berkas_persyaratan', 
+        'berkas_ktp', 
+        'berkas_kk',
+        'bukti_usaha',
         'status', 
         'keterangan', 
         'nomor_surat'

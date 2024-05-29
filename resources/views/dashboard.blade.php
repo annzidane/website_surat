@@ -1,76 +1,77 @@
 <x-app-layout>
-    <!-- <x-slot name="header">
-    </x-slot> -->
-    <!-- <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-            <div class="grid grid-cols-3 gap-4 mb-4">
-            <a href="/kematian">
-                <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 cursor-pointer">
-                    <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                    </svg>
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">Surat Kematian</p>
-                </div>
-            </a>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                    </svg>
-                    <p class="text-2xl text-gray-400 dark:text-gray-500">Surat Kematian</p>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-              <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                    </svg>
-                  </p>
-              </div>
-        </div>
-      </div>
-    </div> -->
+<div class="py-10 sm:ml-5">
   <div class="px-10 py-12 sm:ml-64 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
-    <section class="border-t-4 rounded-md px-4 py-6 flex flex-col gap-12 items-center border-b-8 border-green-400">
-      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Keterangan Kematian</h1>
-      <p>icon</p>
-      <a href="/kematian" class="rounded-lg border-[1px] border-green-400 hover:bg-green-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
-    </section>
-    <section class="border-t-4 rounded-md px-4 py-6 flex flex-col gap-12 items-center border-b-8 border-red-400">
-      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Keterangan Usaha</h1>
-      <p>icon</p>
-      <a href="/usaha" class="rounded-lg border-[1px] border-red-400 hover:bg-red-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
-    </section>
-    <section class="border-t-4 rounded-md px-4 py-6 flex flex-col gap-12 items-center border-b-8 border-yellow-400">
-      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Pernyataan Nikah</h1>
-      <p>icon</p>
-      <a href="/nikah" class="rounded-lg border-[1px] border-yellow-400 hover:bg-yellow-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
-    </section>
-    <section class="border-t-4 rounded-md px-4 py-6 flex flex-col gap-12 items-center border-b-8 border-blue-400">
-      <h1 class="text-xl text-gray-500 text-center font-bold">Suarat Keterangan Domisili</h1>
-      <p>icon</p>
-      <a href="/domisili" class="rounded-lg border-[1px] border-blue-400 hover:bg-blue-400 hover:text-white  px-6 py-1.5 ">Pengajuan</a>
-    </section>
-</div>
-  </x-app-layout>
+    <!-- Surat Keterangan Kematian -->
+    <section class="bg-yellow-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-yellow-500">
+      <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Kematian</h1>
+                <svg class="w-12 h-12 text-yellow-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/kematian" class="inline-block bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Keterangan Usaha -->
+            <section class="bg-red-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-red-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Usaha</h1>
+                <svg class="w-12 h-12 text-red-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/usaha" class="inline-block bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Pengantar Nikah -->
+            <section class="bg-blue-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-blue-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Pengantar Nikah</h1>
+                <svg class="w-12 h-12 text-blue-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/nikah" class="inline-block bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Keterangan Domisili -->
+            <section class="bg-green-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-green-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Domisili</h1>
+                <svg class="w-12 h-12 text-green-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/domisili" class="inline-block bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Keterangan Kelahiran -->
+            <section class="bg-purple-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-purple-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Kelahiran</h1>
+                <svg class="w-12 h-12 text-purple-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/kelahiran" class="inline-block bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Permohonan Pindah Datang WNI -->
+            <section class="bg-pink-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-pink-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Permohonan Pindah WNI</h1>
+                <svg class="w-12 h-12 text-pink-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/pindah" class="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Pembuatan Kartu Keluarga -->
+            <section class="bg-indigo-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-indigo-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Pembuatan Kartu Keluarga</h1>
+                <svg class="w-12 h-12 text-indigo-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/kk" class="inline-block bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition duration-300">Pengajuan</a>
+            </section>
+            
+            <!-- Surat Keterangan Tidak Mampu -->
+            <section class="bg-gray-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-gray-500">
+                <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Tidak Mampu</h1>
+                <svg class="w-12 h-12 text-gray-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                </svg>
+                <a href="/sktm" class="inline-block bg-gray-500 text-white px-6 py-2 rounded-full hover:bg-gray-600 transition duration-300">Pengajuan</a>
+            </section          >
+    </div>
+  </div>
+</x-app-layout>

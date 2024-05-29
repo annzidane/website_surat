@@ -6,6 +6,8 @@ use App\Models\Domisili;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DomisiliController extends Controller
 {
@@ -28,21 +30,26 @@ class DomisiliController extends Controller
             'nama' => 'required|string',
             'tempat_lahir' => 'required|string',
             'tanggal_lahir' => 'required|date',
-            'nik' => 'required|string',
+            'nik' => 'required|string|size:16', // Nik harus memiliki 16 karakter
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'kewarganegaraan' => 'required|in:WNI,WNA',
             'status_pernikahan' => 'required|in:Belum Menikah,Menikah,Cerai Mati,Cerai Hidup',
             'alamat_ktp' => 'required|string',
-            'berkas_persyaratan' => 'required|file',
+            'berkas_ktp' => 'required|file|max:10240', // Maksimum 10 MB
+            'berkas_pengantar_RT' => 'required|file|max:10240', // Maksimum 10 MB
         ]);
 
         Log::info('Validation passed for user ID: ' . auth()->id());
 
-        $berkasPengajuan = $request->file('berkas_persyaratan');
-        $namaFile = time() . '_' . $berkasPengajuan->getClientOriginalName();
-        $path = $berkasPengajuan->storeAs('berkas_persyaratan', $namaFile, 'public');
+        // Proses penyimpanan file berkas_ktp ke dalam direktori storage dengan nama yang unik
+        $berkasKTP = $request->file('berkas_ktp');
+        $pathKTP = $berkasKTP->storeAs('berkas_ktp', Str::random(40) . '.' . $berkasKTP->getClientOriginalExtension());
 
-        Log::info('File uploaded by user ID: ' . auth()->id() . ' to path: ' . $path);
+        // Proses penyimpanan file berkas_pengantar_RT ke dalam direktori storage dengan nama yang unik
+        $berkasPengantarRT = $request->file('berkas_pengantar_RT');
+        $pathPengantarRT = $berkasPengantarRT->storeAs('berkas_pengantar_RT', Str::random(40) . '.' . $berkasPengantarRT->getClientOriginalExtension());
+
+        Log::info('Files uploaded by user ID: ' . auth()->id());
 
         // Proses penyimpanan data ke dalam database
         $domisili = new Domisili();
@@ -55,7 +62,12 @@ class DomisiliController extends Controller
         $domisili->kewarganegaraan = $validatedData['kewarganegaraan'];
         $domisili->status_pernikahan = $validatedData['status_pernikahan'];
         $domisili->alamat_ktp = $validatedData['alamat_ktp'];
-        $domisili->berkas_persyaratan = $request->file('berkas_persyaratan')->store('public/berkas_persyaratan'); // Simpan berkas persyaratan ke dalam direktori storage
+        $domisili->berkas_ktp = $pathKTP;
+        $domisili->berkas_pengantar_RT = $pathPengantarRT;
+        $domisili->keterangan_domisili = 'belum ada';
+        $domisili->status = 'Data Sedang Diperiksa';
+        $domisili->keterangan = 'Menunggu Konfirmasi';
+        $domisili->nomor_surat = 'belum ada';
         $domisili->save();
 
         // Beri respon berhasil dan redirect ke halaman yang sesuai
@@ -74,5 +86,13 @@ class DomisiliController extends Controller
 
         return view('surat.listDomisili', compact('data'));
     }
+    public function cetak($id)
+    {
+        set_time_limit(300); // Extend execution time
 
+        $data = Domisili::findOrFail($id);
+
+        $pdf = PDF::loadView('surat.domisili_pdf', compact('data'));
+        return $pdf->download('Surat_Keterangan_Domisili.pdf');
+    }
 }

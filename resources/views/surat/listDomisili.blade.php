@@ -20,7 +20,7 @@
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="px-6 py-4">{{ $index + 1 }}</td>
                                 <td class="px-6 py-4">{{ $item->created_at->format('d/m/Y') }}</td>
-                                <td class="px-6 py-4">Surat Domisili</td>
+                                <td class="px-6 py-4">Surat Keterangan Domisili</td>
                                 <td class="px-6 py-4">{{ $item->user->name }}</td>
                                 <td class="px-6 py-4">{{ $item->status }}</td>
                                 <td class="px-6 py-4">{{ $item->keterangan }}</td>

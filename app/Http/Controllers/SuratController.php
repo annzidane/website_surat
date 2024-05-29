@@ -7,6 +7,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class SuratController extends Controller
 {
@@ -39,17 +40,37 @@ class SuratController extends Controller
             'jam_meninggal' => 'required|date_format:H:i',
             'tempat_meninggal' => 'required|string|max:255',
             'sebab_meninggal' => 'required|string|max:255',
-            'berkas_persyaratan' => 'required|file|max:10240',
+            'umur' => 'required|string|max:16',
+            'agama' => 'required|in:Islam,Kristen,Katholik,Hindu,Buddha,Konghucu',
+            'nama_pelapor' => 'required|string|max:255',
+            'nik_pelapor' => 'required|string|max:16',
+            'tanggal_lahir_pelapor' => 'required|date',
+            'pekerjaan_pelapor' => 'required|string|max:255',
+            'alamat_pelapor' => 'required|string',
+            'hubungan_pelapor' => 'required|string|max:255',
+            'berkas_ktp' => 'required|file|max:10240',
+            'berkas_kk' => 'required|file|max:10240',
+            'berkas_surat_kematian' => 'nullable|file|max:10240',
         ]);
 
         Log::info('Validation passed for user ID: ' . auth()->id());
 
-        // Simpan berkas persyaratan
-        $berkasPengajuan = $request->file('berkas_persyaratan');
-        $namaFile = $berkasPengajuan->getClientOriginalName();
-        $path = $berkasPengajuan->storeAs('berkas_persyaratan', $namaFile, 'public');
+        // Simpan berkas pelapor dengan nama unik
+        $berkasKtp = $request->file('berkas_ktp');
+        $namaFileKtp = Str::uuid() . '.' . $berkasKtp->getClientOriginalExtension();
+        $pathKtp = $berkasKtp->storeAs('berkas_pelapor', $namaFileKtp, 'public');
 
-        Log::info('File uploaded by user ID: ' . auth()->id() . ' to path: ' . $path);
+        $berkasKk = $request->file('berkas_kk');
+        $namaFileKk = Str::uuid() . '.' . $berkasKk->getClientOriginalExtension();
+        $pathKk = $berkasKk->storeAs('berkas_pelapor', $namaFileKk, 'public');
+
+        // Simpan berkas surat kematian jika ada dengan nama unik
+        $pathSuratKematian = null;
+        if ($request->hasFile('berkas_surat_kematian')) {
+            $berkasSuratKematian = $request->file('berkas_surat_kematian');
+            $namaFileSuratKematian = Str::uuid() . '.' . $berkasSuratKematian->getClientOriginalExtension();
+            $pathSuratKematian = $berkasSuratKematian->storeAs('berkas_surat_kematian', $namaFileSuratKematian, 'public');
+        }
 
         // Simpan data pengajuan
         $kematian = new Kematian();
@@ -67,7 +88,17 @@ class SuratController extends Controller
         $kematian->jam_meninggal = $request->jam_meninggal;
         $kematian->tempat_meninggal = $request->tempat_meninggal;
         $kematian->sebab_meninggal = $request->sebab_meninggal;
-        $kematian->berkas_persyaratan = $path;
+        $kematian->umur = $request->umur;
+        $kematian->agama = $request->agama;
+        $kematian->nama_pelapor = $request->nama_pelapor;
+        $kematian->nik_pelapor = $request->nik_pelapor;
+        $kematian->tanggal_lahir_pelapor = $request->tanggal_lahir_pelapor;
+        $kematian->pekerjaan_pelapor = $request->pekerjaan_pelapor;
+        $kematian->alamat_pelapor = $request->alamat_pelapor;
+        $kematian->hubungan_pelapor = $request->hubungan_pelapor;
+        $kematian->berkas_ktp = $pathKtp;
+        $kematian->berkas_kk = $pathKk;
+        $kematian->berkas_surat_kematian = $pathSuratKematian;
         $kematian->status = 'Data Sedang Diperiksa';
         $kematian->keterangan = 'Menunggu Konfirmasi';
         $kematian->save();
@@ -97,4 +128,5 @@ class SuratController extends Controller
 
         return $pdf->download('surat_kematian.pdf');
     }
+    
 }

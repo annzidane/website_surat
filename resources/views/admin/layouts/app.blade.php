@@ -13,6 +13,53 @@
         
         <!-- Custom styles for this template-->
         <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+        <style>
+            .pagination {
+                margin-top: 20px;
+            }
+            .pagination .page-item .page-link {
+                color: #007bff;
+            }
+            .pagination .page-item.active .page-link {
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+            .modal-header {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .btn-close {
+                color: white;
+            }
+
+            .form-label {
+                font-weight: bold;
+            }
+
+            .form-select, .form-control {
+                border-radius: 0.375rem;
+                padding: 0.75rem 1rem;
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            }
+
+            .form-select:focus, .form-control:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+                transition: background-color 0.3s, border-color 0.3s;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        </style>
     </head>
         <body id="page-top">
         <!-- Page Wrapper -->

@@ -19,12 +19,14 @@ class CreateUsahaTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('nik');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Duda', 'Janda']);
+            $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Cerai Mati', 'Cerai Hidup']);
             $table->text('alamat');
             $table->string('usaha');
             $table->string('lokasi');
             $table->string('lama_usaha');
-            $table->string('berkas_persyaratan');
+            $table->string('berkas_ktp');
+            $table->string('berkas_kk');
+            $table->string('bukti_usaha')->nullable();
             $table->enum('status', ['Data Sedang Diperiksa', 'Penandatanganan', 'Selesai', 'Ditolak'])->default('Data Sedang Diperiksa');
             $table->string('keterangan')->default('Menunggu Konfirmasi');
             $table->string('nomor_surat')->default('belum ada');
