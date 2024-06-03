@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class NikahController extends Controller
 {
@@ -85,8 +86,13 @@ class NikahController extends Controller
         } else {
             $data = Nikah::all();
         }
-
         return view('surat.listNikah', compact('data'));
     }
+    public function cetak($id)
+    {
+        $data = Nikah::findOrFail($id);
+        $pdf = PDF::loadView('surat.nikah_pdf', compact('data'));
 
+        return $pdf->download('surat_pengantar_nikah.pdf');
+    }
 }

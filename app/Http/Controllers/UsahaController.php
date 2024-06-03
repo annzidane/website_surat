@@ -16,7 +16,6 @@ class UsahaController extends Controller
     {
         return view('surat.usaha');
     }
-
     public function usahaStore(Request $request)
     {
         // Check if user is authenticated
@@ -97,16 +96,8 @@ class UsahaController extends Controller
         } else {
             $data = Usaha::all();
         }
-
         return view('surat.listUsaha', compact('data'));
     }
-    // public function cetak($id)
-    // {
-    //     $data = Usaha::findOrFail($id);
-    //     $pdf = PDF::loadView('surat.usaha_pdf', compact('data'));
-
-    //     return $pdf->download('surat_usaha.pdf');
-    // }
     public function cetak($id)
     {
         set_time_limit(300); // Extend execution time

@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Surat Keterangan Domisili')
+@section('title', 'Surat Pengantar Nikah')
 
 @section('contents')
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="border-start border-primary shadow-lg p-4">
-                <h1>Daftar Pengajuan Surat Domisili</h1>
+                <h1>Daftar Pengajuan Surat Pengantar Nikah</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -52,7 +52,7 @@
                                     </button>
                                     
                                     <!-- Form Hapus -->
-                                    <form action="{{ route('domisili.destroy', $pengajuan->id) }}" method="POST">
+                                    <form action="{{ route('nikah.destroy', $pengajuan->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?')">
@@ -60,22 +60,28 @@
                                         </button>
                                     </form>
                                 </div>
-
                                 <!-- Preview Modal -->
                                 <div class="modal fade" id="previewModal{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="previewModalLabel{{ $pengajuan->id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
+                                            <!-- Modal Header -->
                                             <div class="modal-header bg-primary text-white">
-                                                <h5 class="modal-title" id="previewModalLabel{{ $pengajuan->id }}">Detail Pengajuan</h5>
+                                                <h5 class="modal-title" id="previewModalLabel{{ $pengajuan->id }}">Detail Pengajuan Pernikahan</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
+                                            <!-- Modal Body -->
                                             <div class="modal-body">
                                                 <div class="row">
+                                                    <!-- Left Column -->
                                                     <div class="col-md-6 border-end">
-                                                        <h6 class="fw-bold text-primary mb-3">Informasi Pengaju</h6>
+                                                        <h6 class="fw-bold text-primary mb-3">Informasi Pengajuan</h6>
                                                         <div class="mb-3">
                                                             <label class="form-label"><strong>Nama</strong></label>
                                                             <p>{{ $pengajuan->nama }}</p>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label"><strong>Jenis Kelamin</strong></label>
+                                                            <p>{{ $pengajuan->jenis_kelamin }}</p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label"><strong>Tempat Lahir</strong></label>
@@ -86,50 +92,51 @@
                                                             <p>{{ $pengajuan->tanggal_lahir }}</p>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label"><strong>NIK</strong></label>
-                                                            <p>{{ $pengajuan->nik }}</p>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label"><strong>Jenis Kelamin</strong></label>
-                                                            <p>{{ $pengajuan->jenis_kelamin }}</p>
-                                                        </div>
-                                                        <div class="mb-3">
                                                             <label class="form-label"><strong>Kewarganegaraan</strong></label>
                                                             <p>{{ $pengajuan->kewarganegaraan }}</p>
                                                         </div>
                                                     </div>
+                                                    <!-- Right Column -->
                                                     <div class="col-md-6">
                                                         <div class="mb-3">
-                                                            <label class="form-label"><strong>Status Pernikahan</strong></label>
-                                                            <p>{{ $pengajuan->status_pernikahan }}</p>
+                                                            <label class="form-label"><strong>Agama</strong></label>
+                                                            <p>{{ $pengajuan->agama }}</p>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label"><strong>Alamat KTP</strong></label>
-                                                            <p>{{ $pengajuan->alamat_ktp }}</p>
+                                                            <label class="form-label"><strong>Pekerjaan</strong></label>
+                                                            <p>{{ $pengajuan->pekerjaan }}</p>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label"><strong>Alamat</strong></label>
+                                                            <p>{{ $pengajuan->alamat }}</p>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label"><strong>Nomor KK</strong></label>
+                                                            <p>{{ $pengajuan->nomor_kk }}</p>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label"><strong>NIK</strong></label>
+                                                            <p>{{ $pengajuan->nik }}</p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label"><strong>Berkas KTP</strong></label>
-                                                            <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp) }}" target="_blank">Lihat Berkas KTP</a></p>
+                                                            <p><a href="{{ asset('storage/' . $pengajuan->foto_ktp) }}" target="_blank">Lihat Berkas</a></p>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label"><strong>Berkas Pengantar RT</strong></label>
-                                                            <p><a href="{{ asset('storage/' . $pengajuan->berkas_pengantar_RT) }}" target="_blank">Lihat Berkas Pengantar RT</a></p>
+                                                            <label class="form-label"><strong>Berkas Persyaratan</strong></label>
+                                                            <p><a href="{{ asset('storage/' . $pengajuan->berkas_persyaratan) }}" target="_blank">Lihat Berkas</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Modal Footer -->
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                @if($pengajuan->status == 'Selesai')
-                                                    <a href="{{ route('domisili.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
-                                                @else
-                                                    <button type="button" class="btn btn-primary" disabled>Cetak</button>
-                                                @endif
+                                                <!-- Add any additional buttons here if needed -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Ubah Status Modal -->
                                 <div class="modal fade" id="exampleModal{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -139,16 +146,12 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('domisili.updateStatus', $pengajuan->id) }}" method="POST" id="statusForm">
+                                                <form action="{{ route('nikah.updateStatus', $pengajuan->id) }}" method="POST" id="statusForm">
                                                     @csrf
                                                     @method('PATCH')
                                                     <div class="mb-3">
                                                         <label for="nomor_surat" class="form-label">Nomor Surat</label>
                                                         <input type="text" class="form-control" id="nomor_surat" name="nomor_surat" value="{{ $pengajuan->nomor_surat }}" placeholder="Masukkan nomor surat">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="keterangan_domisili" class="form-label">Keterangan Domisili</label>
-                                                        <textarea class="form-control" id="keterangan_domisili" name="keterangan_domisili" placeholder="Masukkan keterangan domisili" rows="3">{{ $pengajuan->keterangan_domisili }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="status" class="form-label">Status</label>

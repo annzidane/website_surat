@@ -17,6 +17,14 @@
         .sidebar .nav-item.hidden {
             display: none;
         }
+        .sidebar {
+            width: 300px;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 
     </style>
 </head>
@@ -78,6 +86,12 @@
             </a>
         </li>
         <li class="nav-item hidden">
+            <a class="nav-link" href="/admin/nikah">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Surat Pengantar Nikah</span>
+            </a>
+        </li>
+        <li class="nav-item hidden">
             <a class="nav-link" href="/admin/kelahiran">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>Surat Keterangan Kelahiran</span>
@@ -86,7 +100,7 @@
         <li class="nav-item hidden">
             <a class="nav-link" href="/admin/pindah">
                 <i class="fas fa-fw fa-file-alt"></i>
-                <span>Surat Keterangan Pindah</span>
+                <span>Surat Pengajuan Pindah</span>
             </a>
         </li>
         <li class="nav-item hidden">

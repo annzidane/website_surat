@@ -11,19 +11,12 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): View
     {
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
-
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
@@ -47,17 +40,12 @@ class ProfileController extends Controller
             // Menyimpan path foto ke kolom 'foto' pada model User
             $user->foto = $fotoPath;
         }
-
         // Menyimpan perubahan pada model User ke database
         $user->save();
 
         // Redirect ke halaman edit profil dengan pesan sukses
         return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
-
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

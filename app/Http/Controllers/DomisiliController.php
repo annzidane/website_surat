@@ -15,7 +15,6 @@ class DomisiliController extends Controller
     {
         return view('surat.domisili');
     }
-
     public function domisiliStore(Request $request)
     {
         $userId = auth()->id();
@@ -83,7 +82,6 @@ class DomisiliController extends Controller
         } else {
             $data = Domisili::all();
         }
-
         return view('surat.listDomisili', compact('data'));
     }
     public function cetak($id)

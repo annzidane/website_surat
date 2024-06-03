@@ -15,7 +15,6 @@ class SuratController extends Controller
     {
         return view('surat.kematian');
     }
-
     public function kematianStore(Request $request)
     {
         // Check if user is authenticated
@@ -120,13 +119,11 @@ class SuratController extends Controller
 
         return view('surat.listKematian', compact('data'));
     }
-
     public function cetak($id)
     {
         $data = Kematian::findOrFail($id);
         $pdf = PDF::loadView('surat.kematian_pdf', compact('data'));
 
         return $pdf->download('surat_kematian.pdf');
-    }
-    
+    } 
 }

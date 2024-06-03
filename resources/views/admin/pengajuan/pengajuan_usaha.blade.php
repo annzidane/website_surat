@@ -21,9 +21,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pengajuanSurat as $pengajuan)
+                        @foreach ($pengajuanSurat as $index => $pengajuan)
                         <tr>
-                            <th scope="row">{{ $pengajuan->id }}</th>
+                            <th scope="row">{{ $index + 1 }}</th>
                             <td>{{ $pengajuan->user->name }}</td>
                             <td>{{ $pengajuan->nomor_surat }}</td>
                             <td>{{ $pengajuan->created_at->format('d/m/Y') }}</td>
@@ -40,17 +40,26 @@
                             </td>
                             <td>{{ $pengajuan->keterangan }}</td>
                             <td>
-                            <div class="d-flex">
-                                <!-- Button trigger modal for Preview -->
-                                <button type="button" class="btn btn-success btn-sm show" data-bs-toggle="modal" data-bs-target="#previewModal{{ $pengajuan->id }}" title="Show">
-                                    <i class="fa fa-eye"></i>
-                                </button>
+                                <div class="d-flex">
+                                    <!-- Button trigger modal for Preview -->
+                                    <button type="button" class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#previewModal{{ $pengajuan->id }}" title="Show">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
 
-                                <!-- Button trigger modal for Ubah Status -->
-                                <button type="button" class="btn btn-warning btn-sm edit" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pengajuan->id }}" title="Edit">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </div>
+                                    <!-- Button trigger modal for Ubah Status -->
+                                    <button type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pengajuan->id }}" title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    
+                                    <!-- Form Hapus -->
+                                    <form action="{{ route('usaha.destroy', $pengajuan->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
                                 <!-- Preview Modal -->
                                 <div class="modal fade" id="previewModal{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="previewModalLabel{{ $pengajuan->id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">

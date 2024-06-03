@@ -16,6 +16,7 @@ use App\Http\Controllers\PindahController;
 use App\Http\Controllers\SktmController;
 use App\Http\Controllers\UsahaAdminController;
 use App\Http\Controllers\KelahiranAdminController;
+use App\Http\Controllers\NikahAdminController;
 use App\Http\Controllers\NikahController;
 use App\Http\Controllers\PindahAdminController;
 use App\Http\Controllers\SktmAdminController;
@@ -40,27 +41,39 @@ Route::patch('/surat/update/{id}', [HomeController::class, 'updateStatus'])->nam
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('rekap/download', [DashboardController::class, 'download'])->name('rekap.download');
+
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
     Route::patch('/users/update-password/{user}', [UserController::class, 'updatePassword'])->name('admin.user.updatePassword');
     Route::delete('/users/delete/{user}', [UserController::class, 'deleteUser'])->name('admin.user.delete');
 
     Route::get('kematian', [HomeController::class, 'adminKematian']);
     Route::patch('kematian/update/{id}', [HomeController::class, 'updateStatus'])->name('kematian.updateStatus');
+    Route::delete('kematian/destroy/{id}', [HomeController::class, 'destroy'])->name('kematian.destroy');
 
     Route::get('usaha', [UsahaAdminController::class, 'adminUsaha']);
     Route::patch('usaha/update/{id}', [UsahaAdminController::class, 'updateStatus'])->name('usaha.updateStatus');
+    Route::delete('usaha/destroy/{id}', [UsahaAdminController::class, 'destroy'])->name('usaha.destroy');
     
     Route::get('domisili', [DomisiliAdminController::class, 'adminDomisili']);
     Route::patch('domisili/update/{id}', [DomisiliAdminController::class, 'updateStatus'])->name('domisili.updateStatus');
+    Route::delete('domisili/destroy/{id}', [DomisiliAdminController::class, 'destroy'])->name('domisili.destroy');
     
+    Route::get('nikah', [NikahAdminController::class, 'adminNikah']);
+    Route::patch('nikah/update/{id}', [NikahAdminController::class, 'updateStatus'])->name('nikah.updateStatus');
+    Route::delete('nikah/destroy/{id}', [NikahAdminController::class, 'destroy'])->name('nikah.destroy');
+
     Route::get('kelahiran', [KelahiranAdminController::class, 'adminKelahiran']);
     Route::patch('kelahiran/update/{id}', [KelahiranAdminController::class, 'updateStatus'])->name('kelahiran.updateStatus');
+    Route::delete('kelahiran/destroy/{id}', [KelahiranAdminController::class, 'destroy'])->name('kelahiran.destroy');
     
     Route::get('pindah', [PindahAdminController::class, 'adminPindah']);
     Route::patch('pindah/update/{id}', [PindahAdminController::class, 'updateStatus'])->name('pindah.updateStatus');
+    Route::delete('pindah/destroy/{id}', [PindahAdminController::class, 'destroy'])->name('pindah.destroy');
     
     Route::get('sktm', [SktmAdminController::class, 'adminSktm']);
     Route::patch('sktm/update/{id}', [SktmAdminController::class, 'updateStatus'])->name('sktm.updateStatus');
+    Route::delete('sktm/destroy/{id}', [SktmAdminController::class, 'destroy'])->name('sktm.destroy');
 });
 
 

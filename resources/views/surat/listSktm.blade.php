@@ -54,21 +54,32 @@
                                         <p x-text="selectedData.nik" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Tempat Lahir</label>
-                                        <p x-text="selectedData.tempat_lahir" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Tanggal Lahir</label>
-                                        <p x-text="selectedData.tanggal_lahir" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">Keperluan</label>
+                                        <p x-text="selectedData.keperluan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <!-- Add more fields as needed -->
                                 </div>
+                                <div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Nomor Surat</label>
+                                        <p x-text="selectedData.nomor_surat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Status Surat</label>
+                                        <p x-text="selectedData.status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Keterangan</label>
+                                        <p x-text="selectedData.keterangan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <!-- Add more fields as needed -->
                                 </div>
-                                <div class="mt-6 text-right space-x-2">
+                            </div>
+                            <div class="mt-6 text-right space-x-2">
                                 <button @click="showPopup = false" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">Close</button>
                                 <a 
                                     x-show="selectedData.status === 'Selesai'" 
-                                    :href="`/sktm/cetak/${selectedData.id}`"
+                                    :href="`/domisili/cetak/${selectedData.id}`"
                                     class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
                                 >
                                     Cetak

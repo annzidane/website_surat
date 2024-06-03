@@ -78,6 +78,7 @@ return new class extends Migration
             $table->enum('status', ['Data Sedang Diperiksa', 'Penandatanganan', 'Selesai', 'Ditolak'])->default('Data Sedang Diperiksa');
             $table->string('keterangan')->default('Menunggu Konfirmasi');
             $table->string('nomor_surat')->default('belum ada');
+            $table->string('surat_kelahiran')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 

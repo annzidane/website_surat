@@ -79,6 +79,7 @@
     <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="/image/pemalang.png" class="h-8" alt="logo-sidebar">
                 <img src="/image/logo_sambeng.png" class="h-8" alt="logo-sidebar">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SURAT SAMBENG</span>
             </a>
@@ -115,7 +116,7 @@
 
     <main>
         <!-- Foto background dengan tulisan "Desa Sambeng" -->
-        <div id="desa-sambeng" class="background min-h-[70vh] grid place-items-center text-white relative">
+        <div id="desa-sambeng" class="background min-h-[80vh] grid place-items-center text-white relative">
             <video autoplay muted loop id="background-video" class="absolute inset-0 w-full h-full object-cover">
                 <source src="/videos/background_angkasa.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -123,6 +124,7 @@
             <section class="relative z-10 text-center">
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">KANTOR KELURAHAN DESA SAMBENG</h2>
                 <p class="text-lg md:text-xl lg:text-2xl">Selamat Datang di KANTOR KELURAHAN DESA SAMBENG</p>
+                <p class="text-lg md:text-xl lg:text-2xl">Kecamatan Bantarbolang Kabupaten Pemalang</p>
                 <a href="/login" class="text-black bg-white py-2 px-4 rounded-lg mt-4 inline-block">Buat Surat</a> <!-- Mengganti "Login" menjadi "Masuk" -->
             </section>
         </div>
@@ -130,7 +132,7 @@
 
 
         <!-- Container untuk layanan surat -->
-    <div id="layanan-surat" class="min-h-screen flex flex-col items-center justify-center py-10 px-6">
+        <div id="layanan-surat" class="min-h-screen flex flex-col items-center justify-center py-10 px-6">
         <h3 class="text-3xl font-bold mb-10 text-gray-800">Layanan Surat</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             
@@ -139,7 +141,7 @@
                 <i class="fas fa-baby text-green-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Keterangan Kelahiran</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalKelahiran')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/kelahiran" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Keterangan Kematian -->
@@ -147,7 +149,7 @@
                 <i class="fas fa-skull text-red-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Keterangan Kematian</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalKematian')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/kematian" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Keterangan Usaha -->
@@ -155,7 +157,7 @@
                 <i class="fas fa-briefcase text-yellow-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Keterangan Usaha</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalUsaha')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/usaha" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Pengantar Nikah -->
@@ -163,7 +165,7 @@
                 <i class="fas fa-ring text-indigo-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Pengantar Nikah</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalNikah')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/nikah" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Keterangan Domisili -->
@@ -171,7 +173,7 @@
                 <i class="fas fa-home text-purple-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Keterangan Domisili</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalDomisili')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/domisili" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Permohonan Pindah Datang WNI -->
@@ -179,7 +181,7 @@
                 <i class="fas fa-plane-departure text-pink-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Permohonan Pindah Datang WNI</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalPindah')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/pindah" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Pembuatan Kartu Keluarga -->
@@ -187,7 +189,7 @@
                 <i class="fas fa-id-card text-blue-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Pembuatan Kartu Keluarga</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalKK')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
 
             <!-- Surat Keterangan Tidak Mampu -->
@@ -195,7 +197,7 @@
                 <i class="fas fa-hand-holding-usd text-orange-500 text-6xl mb-4"></i>
                 <h4 class="text-xl font-bold mb-4">Surat Keterangan Tidak Mampu</h4>
                 <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-2" onclick="openModal('modalTidakMampu')">Lihat Persyaratan</button>
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
+                <button data-url="/sktm" class="page-button bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Buat Surat</button>
             </div>
         </div>
     </div>
@@ -206,10 +208,10 @@
             <span class="close" onclick="closeModal('modalKelahiran')">&times;</span>
             <h2>Persyaratan Surat Keterangan Kelahiran</h2>
             <ul>
-                <li>Fotokopi KTP orang tua</li>
-                <li>Fotokopi KK</li>
-                <li>Surat keterangan lahir dari rumah sakit</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP orang tua</li>
+                <li>Kartu Keluarga</li>
+                <li>Surat keterangan lahir dari rumah sakit (jika ada)</li>
+                
             </ul>
         </div>
     </div>
@@ -219,10 +221,9 @@
             <span class="close" onclick="closeModal('modalKematian')">&times;</span>
             <h2>Persyaratan Surat Keterangan Kematian</h2>
             <ul>
-                <li>Fotokopi KTP orang yang meninggal</li>
-                <li>Fotokopi KK</li>
-                <li>Surat keterangan kematian dari rumah sakit</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP orang yang meninggal</li>
+                <li>Kartu Keluarga</li>
+                <li>Surat keterangan kematian dari rumah sakit (jika ada)</li>
             </ul>
         </div>
     </div>
@@ -232,10 +233,9 @@
             <span class="close" onclick="closeModal('modalUsaha')">&times;</span>
             <h2>Persyaratan Surat Keterangan Usaha</h2>
             <ul>
-                <li>Fotokopi KTP pemilik usaha</li>
-                <li>Fotokopi KK</li>
-                <li>Surat pengantar dari RT/RW</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP pemilik usaha</li>
+                <li>Kartu Keluarga</li>
+                <li>Surat atau Berkas Bukti Usaha (jika ada)</li>
             </ul>
         </div>
     </div>
@@ -245,10 +245,9 @@
             <span class="close" onclick="closeModal('modalNikah')">&times;</span>
             <h2>Persyaratan Surat Pengantar Nikah</h2>
             <ul>
-                <li>Fotokopi KTP kedua mempelai</li>
-                <li>Fotokopi KK kedua mempelai</li>
-                <li>Surat pengantar dari RT/RW</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP</li>
+                <li>KK</li>
+                <li>Surat pengantar dari RT/RW atau Surat Pernyataan Belum Pernah Menikah</li>
             </ul>
         </div>
     </div>
@@ -258,10 +257,8 @@
             <span class="close" onclick="closeModal('modalDomisili')">&times;</span>
             <h2>Persyaratan Surat Keterangan Domisili</h2>
             <ul>
-                <li>Fotokopi KTP</li>
-                <li>Fotokopi KK</li>
-                <li>Surat pengantar dari RT/RW</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP</li>
+                <li>Surat pengantar dari RT/RW (jika ada)</li>
             </ul>
         </div>
     </div>
@@ -269,12 +266,12 @@
     <div id="modalPindah" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('modalPindah')">&times;</span>
-            <h2>Persyaratan Surat Permohonan Pindah Datang WNI</h2>
+            <h2>Persyaratan Surat Permohonan Pindah</h2>
             <ul>
-                <li>Fotokopi KTP</li>
-                <li>Fotokopi KK</li>
-                <li>Surat pengantar dari RT/RW</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP</li>
+                <li>Kartu Keluarga</li>
+                <li>Surat pengantar dari RT/RW (jika ada)</li>
+                <li>Bukti Pelunasa PBB</li>
             </ul>
         </div>
     </div>
@@ -287,7 +284,6 @@
                 <li>Fotokopi KTP suami dan istri</li>
                 <li>Fotokopi akta nikah</li>
                 <li>Surat pengantar dari RT/RW</li>
-                <li>Dan lain-lain...</li>
             </ul>
         </div>
     </div>
@@ -297,10 +293,9 @@
             <span class="close" onclick="closeModal('modalTidakMampu')">&times;</span>
             <h2>Persyaratan Surat Keterangan Tidak Mampu</h2>
             <ul>
-                <li>Fotokopi KTP</li>
-                <li>Fotokopi KK</li>
-                <li>Surat pengantar dari RT/RW</li>
-                <li>Dan lain-lain...</li>
+                <li>KTP</li>
+                <li>Kartu Keluarga</li>
+                <li>Surat pengantar dari RT/RW (jika ada)</li>
             </ul>
         </div>
     </div>
@@ -418,7 +413,7 @@
                     </li>
                     <li class="flex items-center">
                         <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>
-                        Alamat: <span class="ml-2">Jl. Contoh No. 123, Desa Sambeng</span>
+                        Alamat: <span class="ml-2">Jl.sambeng dk.lumpang Desa Sambeng, Kec. Bantarbolang, Kabupaten Pemalang, Jawa Tengah</span>
                     </li>
                 </ul>
                 <!-- Tampilkan peta di sini -->
@@ -437,9 +432,9 @@
     <footer class="bg-white shadow dark:bg-gray-900">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                <a class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="/image/logo_sambeng.png" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Surat Sambeng</span>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                     <li>
@@ -457,7 +452,7 @@
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
         </div>
     </footer>
 
@@ -482,21 +477,38 @@
             });
         });
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-        }
+    document.getElementById(modalId).style.display = "block";
+}
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+}
 
-        window.onclick = function(event) {
-            const modals = document.getElementsByClassName('modal');
-            for (let i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    modals[i].style.display = "none";
-                }
-            }
+window.onclick = function(event) {
+    const modals = document.getElementsByClassName('modal');
+    for (let i = 0; i < modals.length; i++) {
+        if (event.target == modals[i]) {
+            modals[i].style.display = "none";
         }
+    }
+}
+
+// Menambahkan listener khusus untuk button-modal
+document.querySelectorAll('button.modal-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var modalId = this.getAttribute('data-modal-id');
+        openModal(modalId);
+    });
+});
+
+// Menambahkan listener khusus untuk button-pindah-halaman
+document.querySelectorAll('button.page-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var url = this.getAttribute('data-url');
+        window.location.href = url;
+    });
+});
+
     </script>
 </body>
 

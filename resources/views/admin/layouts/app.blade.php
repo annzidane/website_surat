@@ -13,6 +13,7 @@
         
         <!-- Custom styles for this template-->
         <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRd4mTg4/FL/8gfV3+6PcbK/6niD46S3G7Hcp3NxF" crossorigin="anonymous">
         <style>
             .pagination {
                 margin-top: 20px;

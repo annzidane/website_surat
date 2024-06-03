@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class DomisiliAdminController extends Controller
 {
-
     public function adminDomisili()
     {
-        $pengajuanSurat = Domisili::paginate(10); // Menampilkan 10 data per halaman
+        $pengajuanSurat = Domisili::paginate(5); // Menampilkan 10 data per halaman
         return view('admin.pengajuan.pengajuan_domisili', compact('pengajuanSurat'));
     }
-
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
@@ -29,7 +27,17 @@ class DomisiliAdminController extends Controller
         $pengajuan->status = $request->status;
         $pengajuan->keterangan = $request->keterangan;
         $pengajuan->save();
-
         return redirect()->back()->with('success', 'Status pengajuan berhasil diperbarui.');
+    }
+    public function destroy($id)
+    {
+        // Cari data pengajuan berdasarkan ID
+        $pengajuan = Domisili::findOrFail($id);
+
+        // Hapus data pengajuan
+        $pengajuan->delete();
+
+        // Redirect ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
 }

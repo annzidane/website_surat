@@ -65,6 +65,7 @@ class Kelahiran extends Model
         'status',
         'keterangan',
         'nomor_surat',
+        'surat_kelahiran',
     ];
 
     public function user()

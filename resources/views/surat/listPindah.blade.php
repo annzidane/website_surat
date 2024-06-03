@@ -42,35 +42,41 @@
                 <template x-if="showPopup">
                     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                         <div class="bg-white rounded-lg p-6 w-full max-w-md mx-auto">
-                            <h2 class="text-xl font-semibold mb-4">Detail Surat Pindah</h2>
+                            <h2 class="text-xl font-semibold mb-4">Detail Surat Keterangan Pindah</h2>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Nama Pemohon</label>
-                                        <p x-text="selectedData.nama_lengkap_pemohon" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">Nama Kepala Keluarga</label>
+                                        <p x-text="selectedData.nama_kepala_keluarga" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">NIK Pemohon</label>
-                                        <p x-text="selectedData.nik_pemohon" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">No. KK</label>
+                                        <p x-text="selectedData.nomor_kk" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Alamat Asal</label>
-                                        <p x-text="selectedData.alamat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">Status KK</label>
+                                        <p x-text="selectedData.status_kk" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <!-- Add more fields as needed -->
                                 </div>
                                 <div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Alamat Tujuan</label>
-                                        <p x-text="selectedData.alamat_tujuan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">Nomor Surat</label>
+                                        <p x-text="selectedData.nomor_surat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Tanggal Kedatangan</label>
-                                        <p x-text="selectedData.tanggal_kedatangan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">Status Surat</label>
+                                        <p x-text="selectedData.status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Status KK</label>
-                                        <p x-text="selectedData.status_kk" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                        <label class="block font-medium text-gray-700">Keterangan</label>
+                                        <p x-text="selectedData.keterangan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Surat</label>
+                                        <a :href="'/storage/surat_pindah/' + selectedData.surat_pindah" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-blue-500" download>
+                                            Download Surat Permohonan Pindah
+                                        </a>
                                     </div>
                                     <!-- Add more fields as needed -->
                                 </div>

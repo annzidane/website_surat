@@ -178,7 +178,5 @@ class PindahController extends Controller
         }
 
         return view('surat.listPindah', compact('data'));
-    }
-    
-
+    }   
 }

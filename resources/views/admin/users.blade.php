@@ -3,9 +3,9 @@
 @section('title', 'User Management')
 
 @section('contents')
-  <div class="container mt-4">
+  <div class="container-fluid">
     <div class="card shadow-sm">
-      <div class="card-body">
+      <div class="border-start border-primary shadow-lg p-4">
       <h1>User Management</h1>
         <table class="table table-striped">
           <thead>

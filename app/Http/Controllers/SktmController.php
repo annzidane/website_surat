@@ -15,7 +15,6 @@ class SktmController extends Controller
     {
         return view('surat.sktm');
     }
-
     public function sktmStore(Request $request)
     {
         // Check if user is authenticated
@@ -109,15 +108,12 @@ class SktmController extends Controller
         } else {
             $data = Sktm::all();
         }
-
         return view('surat.listSktm', compact('data'));
     }
     public function cetak($id)
     {
         $data = Sktm::findOrFail($id);
         $pdf = PDF::loadView('surat.sktm_pdf', compact('data'));
-
         return $pdf->download('surat_keterangan_tidak_mampu.pdf');
     }
-
 }

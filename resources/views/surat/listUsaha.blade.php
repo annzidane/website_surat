@@ -43,24 +43,43 @@
                     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                         <div class="bg-white rounded-lg p-6 w-full max-w-md mx-auto">
                             <h2 class="text-xl font-semibold mb-4">Detail Surat Keterangan Usaha</h2>
-                            <div class="mb-4">
-                                <label class="block font-medium text-gray-700">Nama</label>
-                                <p x-text="selectedData.nama" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Nama</label>
+                                        <p x-text="selectedData.nama" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">NIK</label>
+                                        <p x-text="selectedData.nik" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Usaha</label>
+                                        <p x-text="selectedData.usaha" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <!-- Add more fields as needed -->
+                                </div>
+                                <div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Nomor Surat</label>
+                                        <p x-text="selectedData.nomor_surat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Status Surat</label>
+                                        <p x-text="selectedData.status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Keterangan</label>
+                                        <p x-text="selectedData.keterangan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <!-- Add more fields as needed -->
+                                </div>
                             </div>
-                            <div class="mb-4">
-                                <label class="block font-medium text-gray-700">Usaha</label>
-                                <p x-text="selectedData.usaha" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
-                            </div>
-                            <div class="mb-4">
-                                <label class="block font-medium text-gray-700">Nomor surat</label>
-                                <p x-text="selectedData.nomor_surat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
-                            </div>
-                            <!-- Add more fields as needed -->
                             <div class="mt-6 text-right space-x-2">
                                 <button @click="showPopup = false" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">Close</button>
                                 <a 
                                     x-show="selectedData.status === 'Selesai'" 
-                                    :href="`/usaha/cetak/${selectedData.id}`"
+                                    :href="`/domisili/cetak/${selectedData.id}`"
                                     class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
                                 >
                                     Cetak

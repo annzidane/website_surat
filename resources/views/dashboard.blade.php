@@ -1,9 +1,9 @@
 <x-app-layout>
 <div class="py-10 sm:ml-5">
   <div class="px-10 py-12 sm:ml-64 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
-    <!-- Surat Keterangan Kematian -->
-    <section class="bg-yellow-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-yellow-500">
-      <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Kematian</h1>
+            <!-- Surat Keterangan Kematian -->
+            <section class="bg-yellow-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-yellow-500">
+            <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Kematian</h1>
                 <svg class="w-12 h-12 text-yellow-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
                 </svg>

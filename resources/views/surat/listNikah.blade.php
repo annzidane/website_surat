@@ -4,7 +4,7 @@
             <div class="container mx-auto" x-data="{ showPopup: false, selectedData: null }">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">No</th>
                                 <th scope="col" class="px-6 py-3">Tanggal Pengajuan</th>
@@ -42,7 +42,7 @@
                 <template x-if="showPopup">
                     <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                         <div class="bg-white rounded-lg p-6 w-full max-w-md mx-auto">
-                            <h2 class="text-xl font-semibold mb-4">Detail Surat Pengantar Nikah</h2>
+                            <h2 class="text-xl font-semibold mb-4">Detail Surat Keterangan Nikah</h2>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <div class="mb-4">
@@ -54,21 +54,32 @@
                                         <p x-text="selectedData.nik" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Tempat Lahir</label>
-                                        <p x-text="selectedData.tempat_lahir" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
-                                    </div>
-                                    <div class="mb-4">
                                         <label class="block font-medium text-gray-700">Tanggal Lahir</label>
                                         <p x-text="selectedData.tanggal_lahir" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
                                     <!-- Add more fields as needed -->
                                 </div>
+                                <div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Nomor Surat</label>
+                                        <p x-text="selectedData.nomor_surat" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Status Surat</label>
+                                        <p x-text="selectedData.status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block font-medium text-gray-700">Keterangan</label>
+                                        <p x-text="selectedData.keterangan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
+                                    </div>
+                                    <!-- Add more fields as needed -->
                                 </div>
-                                <div class="mt-6 text-right space-x-2">
+                            </div>
+                            <div class="mt-6 text-right space-x-2">
                                 <button @click="showPopup = false" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">Close</button>
                                 <a 
                                     x-show="selectedData.status === 'Selesai'" 
-                                    :href="`/surat_pengantar_nikah/cetak/${selectedData.id}`"
+                                    :href="`/domisili/cetak/${selectedData.id}`"
                                     class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
                                 >
                                     Cetak

@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        return view('admin.dashboard');
-    }
 
     public function adminKematian()
     {
-        $pengajuanSurat = Kematian::paginate(10); // Menampilkan 10 data per halaman
+        $pengajuanSurat = Kematian::paginate(5); // Menampilkan 10 data per halaman
         return view('admin.pengajuan.pengajuan_kematian', compact('pengajuanSurat'));
     }
 
@@ -33,6 +30,15 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Status pengajuan berhasil diperbarui.');
     }
+    public function destroy($id)
+    {
+        // Cari data pengajuan berdasarkan ID
+        $pengajuan = Kematian::findOrFail($id);
 
+        // Hapus data pengajuan
+        $pengajuan->delete();
 
+        // Redirect ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
+    }
 }

@@ -21,9 +21,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pengajuanSurat as $pengajuan)
+                        @foreach ($pengajuanSurat as $index => $pengajuan)
                         <tr>
-                            <th scope="row">{{ $pengajuan->id }}</th>
+                            <th scope="row">{{ $index + 1 }}</th>
                             <td>{{ $pengajuan->user->name }}</td>
                             <td>{{ $pengajuan->nomor_surat }}</td>
                             <td>{{ $pengajuan->created_at->format('d/m/Y') }}</td>
@@ -40,17 +40,26 @@
                             </td>
                             <td>{{ $pengajuan->keterangan }}</td>
                             <td>
-                            <div class="d-flex">
-                                <!-- Button trigger modal for Preview -->
-                                <button type="button" class="btn btn-success btn-sm show" data-bs-toggle="modal" data-bs-target="#previewModal{{ $pengajuan->id }}" title="Show">
-                                    <i class="fa fa-eye"></i>
-                                </button>
+                                <div class="d-flex">
+                                    <!-- Button trigger modal for Preview -->
+                                    <button type="button" class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#previewModal{{ $pengajuan->id }}" title="Show">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
 
-                                <!-- Button trigger modal for Ubah Status -->
-                                <button type="button" class="btn btn-warning btn-sm edit" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pengajuan->id }}" title="Edit">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </div>
+                                    <!-- Button trigger modal for Ubah Status -->
+                                    <button type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pengajuan->id }}" title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    
+                                    <!-- Form Hapus -->
+                                    <form action="{{ route('kelahiran.destroy', $pengajuan->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus pengajuan ini?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
                                 <!-- Preview Modal -->
                                 <div class="modal fade" id="previewModal{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="previewModalLabel{{ $pengajuan->id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
@@ -225,7 +234,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('kelahiran.updateStatus', $pengajuan->id) }}" method="POST">
+                                                <form action="{{ route('kelahiran.updateStatus', $pengajuan->id) }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PATCH')
                                                     <div class="mb-3">
@@ -244,6 +253,10 @@
                                                     <div class="mb-3">
                                                         <label for="keterangan" class="form-label">Keterangan</label>
                                                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan keterangan" rows="3">{{ $pengajuan->keterangan }}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="surat_kelahiran">Upload Surat</label>
+                                                        <input type="file" name="surat_kelahiran" id="surat_kelahiran" class="form-control">
                                                     </div>
                                                     <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
                                                 </form>

@@ -126,6 +126,9 @@
                         <a href="/kelahiran/index" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Surat Keterangan Kelahiran</a>
                     </li>
                     <li>
+                        <a href="/nikah/index" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Surat Pengantar Nikah</a>
+                    </li>
+                    <li>
                         <a href="/pindah/index" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Surat Keterangan Pindah Datang</a>
                     </li>
                     <li>

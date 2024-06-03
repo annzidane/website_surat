@@ -68,6 +68,7 @@ class Pindah extends Model
         'status',
         'keterangan',
         'nomor_surat',
+        'surat_pindah',
     ];
 
     /**

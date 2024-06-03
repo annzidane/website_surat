@@ -14,7 +14,6 @@ class KelahiranController extends Controller
     {
         return view('surat.kelahiran');
     }
-
     public function kelahiranStore(Request $request)
     {
         // Check if user is authenticated
@@ -174,7 +173,6 @@ class KelahiranController extends Controller
         } else {
             $data = Kelahiran::all();
         }
-
         return view('surat.listKelahiran', compact('data'));
     }
 }
