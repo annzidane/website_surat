@@ -6,6 +6,7 @@ use App\Models\Kelahiran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class KelahiranAdminController extends Controller
 {
@@ -36,14 +37,20 @@ class KelahiranAdminController extends Controller
             if ($pengajuan->surat_kelahiran) {
                 Storage::delete('public/surat_kelahiran/' . $pengajuan->surat_kelahiran);
             }
+            
+            $file = $request->file('surat_kelahiran');
+            
+            do {
+                $randomName = Str::random(20); // Generate a random string of 20 characters
+                $newFileName = $randomName . '.' . $file->getClientOriginalExtension();
+            } while (Storage::exists('public/surat_kelahiran/' . $newFileName));
 
             // Simpan file baru
-            $file = $request->file('surat_kelahiran');
-            $hashedFileName = Hash::make($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/surat_kelahiran', $hashedFileName);
+            $file->storeAs('public/surat_kelahiran/', $newFileName);
+            
 
             // Simpan nama file yang di-hash ke database
-            $pengajuan->surat_kelahiran = $hashedFileName;
+            $pengajuan->surat_kelahiran = $newFileName;
         }
         $pengajuan->save();
 

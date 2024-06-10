@@ -70,8 +70,8 @@
                                         <label class="block font-medium text-gray-700">Keterangan</label>
                                         <p x-text="selectedData.keterangan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></p>
                                     </div>
-                                    <div class="mb-4">
-                                        <label class="block font-medium text-gray-700">Surat </label>
+                                    <div class="mb-4" x-show="selectedData.surat_kelahiran">
+                                        <label class="block font-medium text-gray-700">Surat</label>
                                         <a :href="'/storage/surat_kelahiran/' + selectedData.surat_kelahiran" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-blue-500" download>
                                             Download Surat Keterangan Kelahiran
                                         </a>

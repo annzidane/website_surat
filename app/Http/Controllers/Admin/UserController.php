@@ -10,7 +10,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        // Filter users by usertype 'user'
+        $users = User::where('usertype', 'user')->get();
+
+        // Pass filtered users to the view
         return view('admin.users', compact('users'));
     }
 

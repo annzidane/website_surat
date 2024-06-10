@@ -100,28 +100,28 @@
             <div>Yang bertanda tangan dibawah ini Kepala Desa Sambeng, Kecamatan Bantarbolang, Kabupaten Pemalang menerangkan bahwa:</div>
             <table>
                 <tr>
-                    <th>Nama :</th>
-                    <td>{{ $data->nama }}</td>
+                    <th>Nama</th>
+                    <td>: {{ $data->nama }}</td>
                 </tr>
                 <tr>
-                    <th>Tempat/Tgl. Lahir :</th>
-                    <td>{{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                    <th>Tempat/Tgl. Lahir</th>
+                    <td>: {{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
-                    <th>NIK :</th>
-                    <td>{{ $data->nik }}</td>
+                    <th>NIK</th>
+                    <td>: {{ $data->nik }}</td>
                 </tr>
                 <tr>
-                    <th>Jenis Kelamin :</th>
-                    <td>{{ $data->jenis_kelamin }}</td>
+                    <th>Jenis Kelamin</th>
+                    <td>: {{ $data->jenis_kelamin }}</td>
                 </tr>
                 <tr>
-                    <th>Pekerjaan :</th>
-                    <td>{{ $data->pekerjaan }}</td>
+                    <th>Pekerjaan</th>
+                    <td>: {{ $data->pekerjaan }}</td>
                 </tr>
                 <tr>
-                    <th>Alamat :</th>
-                    <td>{{ $data->alamat }}</td>
+                    <th>Alamat</th>
+                    <td>: {{ $data->alamat }}</td>
                 </tr>
             </table>
         </div>
@@ -130,20 +130,20 @@
             <div>Adalah benar-benar anak dari :</div>
             <table>
                 <tr>
-                    <th>Nama :</th>
-                    <td>{{ $data->nama_orang_tua }}</td>
+                    <th>Nama</th>
+                    <td>: {{ $data->nama_orang_tua }}</td>
                 </tr>
                 <tr>
-                    <th>NIK :</th>
-                    <td>{{ $data->nik_orang_tua }}</td>
+                    <th>NIK</th>
+                    <td>: {{ $data->nik_orang_tua }}</td>
                 </tr>
                 <tr>
-                    <th>Pekerjaan :</th>
-                    <td>{{ $data->pekerjaan_orang_tua }}</td>
+                    <th>Pekerjaan</th>
+                    <td>: {{ $data->pekerjaan_orang_tua }}</td>
                 </tr>
                 <tr>
-                    <th>Alamat :</th>
-                    <td>{{ $data->alamat_orang_tua }}</td>
+                    <th>Alamat</th>
+                    <td>: {{ $data->alamat_orang_tua }}</td>
                 </tr>
             </table>
         </div>

@@ -29,6 +29,7 @@
             <tr>
                 <th>Tanggal Pengajuan</th>
                 <th>Jenis Surat</th>
+                <th>Status</th>
                 <th>Nama Pengaju</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                 <tr>
                     <td>{{ Carbon\Carbon::parse($record->created_at)->format('d-m-Y') }}</td>
                     <td>{{ class_basename($record) }}</td>
+                    <td>{{($record->status)}}</td>
                     <td>{{ $record->user->name ?? 'N/A' }}</td>
                 </tr>
             @endforeach

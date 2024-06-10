@@ -48,7 +48,7 @@
 
         th, td {
             text-align: left;
-            padding: 8px;
+            padding: 5px;
         }
 
         .signature {
@@ -78,35 +78,35 @@
             <table>
                 <tr>
                     <th>Nama Lengkap</th>
-                    <td>{{ $data->nama }}</td>
+                    <td>: {{ $data->nama }}</td>
                 </tr>
                 <tr>
                     <th>NIK</th>
-                    <td>{{ $data->nik }}</td>
+                    <td>: {{ $data->nik }}</td>
                 </tr>
                 <tr>
                     <th>Jenis Kelamin</th>
-                    <td>{{ $data->jenis_kelamin }}</td>
+                    <td>: {{ $data->jenis_kelamin }}</td>
                 </tr>
                 <tr>
                     <th>Tempat, Tanggal Lahir</th>
-                    <td>{{ $data->tempat_lahir }}, {{ Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                    <td>: {{ $data->tempat_lahir }}, {{ Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
                     <th>Umur</th>
-                    <td>{{ $data->umur }}</td>
+                    <td>: {{ $data->umur }}</td>
                 </tr>
                 <tr>
                     <th>Agama</th>
-                    <td>{{ $data->agama }}</td>
+                    <td>: {{ $data->agama }}</td>
                 </tr>
                 <tr>
                     <th>Status Perkawinan</th>
-                    <td>{{ $data->status_pernikahan }}</td>
+                    <td>: {{ $data->status_pernikahan }}</td>
                 </tr>
                 <tr>
                     <th>Alamat</th>
-                    <td>{{ $data->alamat }}</td>
+                    <td>: {{ $data->alamat }}</td>
                 </tr>
             </table>
         </div>
@@ -115,20 +115,16 @@
             <div class="section-title">Telah Meninggal Dunia Pada:</div>
             <table>
                 <tr>
-                    <th>Hari</th>
-                    <td>{{ $data->hari_meninggal }}</td>
-                </tr>
-                <tr>
                     <th>Tanggal</th>
-                    <td>{{ Carbon::parse($data->tanggal_meninggal)->translatedFormat('d F Y') }}</td>
+                    <td>: {{ Carbon::parse($data->tanggal_meninggal)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
                     <th>Bertempat di</th>
-                    <td>{{ $data->tempat_meninggal }}</td>
+                    <td>: {{ $data->tempat_meninggal }}</td>
                 </tr>
                 <tr>
                     <th>Penyebab Kematian</th>
-                    <td>{{ $data->sebab_meninggal }}</td>
+                    <td>: {{ $data->sebab_meninggal }}</td>
                 </tr>
             </table>
         </div>
@@ -138,37 +134,35 @@
             <table>
                 <tr>
                     <th>Nama Lengkap</th>
-                    <td>{{ $data->nama_pelapor }}</td>
+                    <td>: {{ $data->nama_pelapor }}</td>
                 </tr>
                 <tr>
                     <th>NIK</th>
-                    <td>{{ $data->nik_pelapor }}</td>
+                    <td>: {{ $data->nik_pelapor }}</td>
                 </tr>
                 <tr>
                     <th>Tanggal Lahir</th>
-                    <td>{{ Carbon::parse($data->tanggal_lahir_pelapor)->translatedFormat('d F Y') }}</td>
+                    <td>: {{ Carbon::parse($data->tanggal_lahir_pelapor)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
                     <th>Pekerjaan</th>
-                    <td>{{ $data->pekerjaan_pelapor }}</td>
+                    <td>: {{ $data->pekerjaan_pelapor }}</td>
                 </tr>
                 <tr>
                     <th>Alamat</th>
-                    <td>{{ $data->alamat_pelapor }}</td>
+                    <td>: {{ $data->alamat_pelapor }}</td>
                 </tr>
                 <tr>
                     <th>Hubungan Pelapor</th>
-                    <td>{{ $data->hubungan_pelapor }}</td>
+                    <td>: {{ $data->hubungan_pelapor }}</td>
                 </tr>
             </table>
         </div>
 
         <div class="signature">
-            <div>Sambeng, {{ Carbon::parse($data->updated_at)->translatedFormat('d F Y') }}</div>
+            <div>Sambeng, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</div>
             <div>Kepala Desa Sambeng</div>
-            <span></span>
-            <span></span>
-            <div>Slamet Khasani</div>
+            <div style="margin-top: 50px;">Slamet Khasani</div>
         </div>
     </div>
 </body>

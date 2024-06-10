@@ -26,14 +26,12 @@ class Admin
         // Jika tidak, arahkan pengguna ke halaman lain atau berikan respon yang sesuai
         return redirect('/')->with('error', 'Unauthorized access');
     }
-
     public function updateStatus(Request $request, $id)
     {
         // Pastikan bahwa pengguna yang mencoba mengakses fitur ini adalah admin
         if (auth()->user()->usertype !== 'admin') {
             abort(403, 'Anda tidak diizinkan mengakses halaman ini.');
         }
-
         // Logika perubahan status seperti yang ditunjukkan di atas
     }
 }

@@ -22,13 +22,13 @@ class NikahController extends Controller
         if (!$userId) {
             return redirect('/login')->with('error', 'Please login to submit the form.');
         }
-
-        Log::info('User ID: ' . $userId . ' is trying to store pindah data.');
-        
+    
+        Log::info('User ID: ' . $userId . ' is trying to store nikah data.');
+    
         // Validasi data
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|string|in:Laki-laki,Perempuan',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'tempat_lahir' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
             'kewarganegaraan' => 'required|string|max:255',
@@ -36,16 +36,26 @@ class NikahController extends Controller
             'pekerjaan' => 'required|string|max:255',
             'alamat' => 'required|string',
             'nomor_kk' => 'required|string|max:255',
-            'nik' => 'required|string|max:255',
-            'foto_ktp' => 'required|file|max:10240', // maksimal 2MB
+            'nik' => 'required|string|size:16', // Ensures exactly 16 characters
+            'foto_ktp' => 'required|file|max:10240', // maksimal 10MB
             'surat_pernyataan' => 'required|file|max:10240',
         ]);
-
+    
         Log::info('Validation passed for user ID: ' . $userId);
-
-        // Simpan data ke dalam database
+    
+        // Handle file uploads with unique names
+        $fotoKtp = $request->file('foto_ktp');
+        $namaFileKtp = Str::uuid() . '.' . $fotoKtp->getClientOriginalExtension();
+        $pathKtp = $fotoKtp->storeAs('foto_ktp', $namaFileKtp, 'public');
+    
+        $suratPernyataan = $request->file('surat_pernyataan');
+        $namaFileSuratPernyataan = Str::uuid() . '.' . $suratPernyataan->getClientOriginalExtension();
+        $pathSuratPernyataan = $suratPernyataan->storeAs('surat_pernyataan', $namaFileSuratPernyataan, 'public');
+    
+        Log::info('Files uploaded by user ID: ' . $userId . ' to paths: KTP - ' . $pathKtp . ', Surat Pernyataan - ' . $pathSuratPernyataan);
+    
+        // Save the Nikah data
         $formNikah = new Nikah();
-
         $formNikah->user_id = $userId;
         $formNikah->nama = $validatedData['nama'];
         $formNikah->jenis_kelamin = $validatedData['jenis_kelamin'];
@@ -57,25 +67,16 @@ class NikahController extends Controller
         $formNikah->alamat = $validatedData['alamat'];
         $formNikah->nomor_kk = $validatedData['nomor_kk'];
         $formNikah->nik = $validatedData['nik'];
-
-        // Upload foto KTP
-        if ($request->hasFile('foto_ktp')) {
-            $fotoKtp = $request->file('foto_ktp');
-            $fotoKtpPath = $fotoKtp->storeAs('public/foto_ktp', Str::random(40) . '.' . $fotoKtp->getClientOriginalExtension());
-            $formNikah->foto_ktp = $fotoKtpPath;
-        }
-
-        // Upload surat pernyataan
-        if ($request->hasFile('surat_pernyataan')) {
-            $suratPernyataan = $request->file('surat_pernyataan');
-            $suratPernyataanPath = $suratPernyataan->storeAs('public/surat_pernyataan', Str::random(40) . '.' . $suratPernyataan->getClientOriginalExtension());
-            $formNikah->surat_pernyataan = $suratPernyataanPath;
-        }
-
+        $formNikah->foto_ktp = $pathKtp;
+        $formNikah->surat_pernyataan = $pathSuratPernyataan;
+        $formNikah->status = 'Data Sedang Diperiksa';
+        $formNikah->keterangan = 'Menunggu Konfirmasi';
+        $formNikah->nomor_surat = 'belum ada';
         $formNikah->save();
-
-        // Redirect atau respons sesuai kebutuhan aplikasi Anda
-        return redirect()->route('nikah.index')->with('success', 'Data nikah berhasil disimpan');
+    
+        Log::info('Data saved for user ID: ' . $userId);
+    
+        return redirect()->route('nikah.index')->with('success', 'Data nikah berhasil disimpan.');
     }
 
     public function index()

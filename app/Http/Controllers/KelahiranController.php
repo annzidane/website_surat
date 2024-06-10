@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class KelahiranController extends Controller
 {
@@ -175,4 +176,5 @@ class KelahiranController extends Controller
         }
         return view('surat.listKelahiran', compact('data'));
     }
+
 }

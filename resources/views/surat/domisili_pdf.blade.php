@@ -66,7 +66,7 @@
 
         th, td {
             text-align: left;
-            padding: 8px;
+            padding: 5px;
         }
 
         .signature {
@@ -100,41 +100,36 @@
             <div>Yang bertanda tangan dibawah ini Kepala Desa Sambeng, Kecamatan Bantarbolang, Kabupaten Pemalang menerangkan bahwa:</div>
             <table>
                 <tr>
-                    <th>Nama :</th>
-                    <td>{{ $data->nama }}</td>
+                    <th>Nama</th>
+                    <td>: {{ $data->nama }}</td>
                 </tr>
                 <tr>
-                    <th>Tempat/Tgl. Lahir :</th>
-                    <td>{{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                    <th>Tempat/Tgl. Lahir</th>
+                    <td>: {{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
-                    <th>NIK :</th>
-                    <td>{{ $data->nik }}</td>
+                    <th>NIK</th>
+                    <td>: {{ $data->nik }}</td>
                 </tr>
                 <tr>
-                    <th>Jenis Kelamin :</th>
-                    <td>{{ $data->jenis_kelamin }}</td>
+                    <th>Jenis Kelamin</th>
+                    <td>: {{ $data->jenis_kelamin }}</td>
                 </tr>
                 <tr>
-                    <th>Kewarganegaraan :</th>
-                    <td>{{ $data->kewarganegaraan }}</td>
+                    <th>Kewarganegaraan</th>
+                    <td>: {{ $data->kewarganegaraan }}</td>
                 </tr>
                 <tr>
-                    <th>Status :</th>
-                    <td>{{ $data->status_pernikahan }}</td>
+                    <th>Status</th>
+                    <td>: {{ $data->status_pernikahan }}</td>
                 </tr>
                 <tr>
-                    <th>Alamat KTP :</th>
-                    <td>{{ $data->alamat_ktp }}</td>
+                    <th>Alamat KTP</th>
+                    <td>: {{ $data->alamat_ktp }}</td>
                 </tr>
-            </table>
-        </div>
-
-        <div class="section">
-            <table>
                 <tr>
                     <th>Keterangan</th>
-                    <td>{{ $data->keterangan_domisili }}</td>
+                    <td>: {{ $data->keterangan_domisili }}</td>
                 </tr>
             </table>
         </div>

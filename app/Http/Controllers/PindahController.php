@@ -176,7 +176,7 @@ class PindahController extends Controller
         } else {
             $data = Pindah::all();
         }
-
         return view('surat.listPindah', compact('data'));
-    }   
+    }
+  
 }

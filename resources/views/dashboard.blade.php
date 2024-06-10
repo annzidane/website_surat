@@ -56,14 +56,14 @@
             </section>
             
             <!-- Surat Pembuatan Kartu Keluarga -->
-            <section class="bg-indigo-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-indigo-500">
+            <!-- <section class="bg-indigo-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-indigo-500">
                 <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Pembuatan Kartu Keluarga</h1>
                 <svg class="w-12 h-12 text-indigo-500 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 2C5.589 2 2 5.589 2 10s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
                 </svg>
                 <a href="/kk" class="inline-block bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition duration-300">Pengajuan</a>
             </section>
-            
+             -->
             <!-- Surat Keterangan Tidak Mampu -->
             <section class="bg-gray-100 shadow-lg rounded-lg px-6 py-8 text-center border-t-4 border-b-8 border-gray-500">
                 <h1 class="text-xl text-gray-700 font-bold mb-4">Surat Keterangan Tidak Mampu</h1>

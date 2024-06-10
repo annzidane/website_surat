@@ -15,6 +15,27 @@
       width: 100%;
       height: 100%;
     }
+
+    /* Tambahan CSS untuk tombol Cetak Rekap */
+    .btn-cetak-rekap {
+      display: inline-flex;
+      align-items: center;
+      background-color: #17a2b8;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-cetak-rekap:hover {
+      background-color: #138496;
+      text-decoration: none;
+    }
+
+    .btn-cetak-rekap i {
+      margin-right: 10px;
+    }
   </style>
 
   <div class="container mt-4">
@@ -25,9 +46,11 @@
         <div class="row card-container mt-3">
           <!-- Tombol Cetak Rekap -->
           <div class="col-12 text-right mb-4">
-            <a href="{{ route('rekap.download') }}" class="btn btn-info">Cetak Rekap</a>
+            <a href="{{ route('rekap.download') }}" class="btn-cetak-rekap">
+              <i class="fas fa-print"></i> Cetak Rekap
+            </a>
           </div>
-          
+
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card bg-primary text-white shadow">
               <div class="card-body">
@@ -160,62 +183,76 @@
             </div>
           </div>
 
-          <!-- Add more cards here as needed -->
         </div>
       </div>
     </div>
 
-    <!-- Container untuk Chart -->
+    <!-- Container for the Chart -->
     <div class="card shadow-sm">
       <div class="card-body">
         <h2>Grafik Pengajuan Surat Per Bulan</h2>
-        <canvas id="suratChart"></canvas>
+        <!-- Chart for document submissions -->
+        <div id="suratChart" style="height: 350px;"></div>
       </div>
     </div>
   </div>
-  
-  <canvas id="suratChart"></canvas>
-  <!-- Include Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Include ApexCharts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const ctx = document.getElementById('suratChart').getContext('2d');
+      // Data dari server
       const suratData = @json($suratData);
 
-      const chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(suratData),
-          datasets: [{
-            label: 'Total Surat Per Bulan',
-            data: Object.values(suratData),
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-          }]
+      // Buat array untuk labels dan data
+      const labels = Object.keys(suratData);
+      const data = Object.values(suratData);
+
+      // Buat chart
+      const chart = new ApexCharts(document.querySelector("#suratChart"), {
+        series: [{
+          name: 'Total Surat Per Bulan',
+          data: data,
+        }],
+        chart: {
+          height: 350,
+          type: 'area',
+          toolbar: {
+            show: false
+          },
         },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
+        markers: {
+          size: 4
+        },
+        colors: ['#4154f1'],
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.3,
+            opacityTo: 0.4,
+            stops: [0, 90, 100]
           }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 2
+        },
+        xaxis: {
+          categories: labels,
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
         }
       });
+
+      // Render chart
+      chart.render();
     });
   </script>
 @endsection

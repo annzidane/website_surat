@@ -79,7 +79,7 @@
                                 <button @click="showPopup = false" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">Close</button>
                                 <a 
                                     x-show="selectedData.status === 'Selesai'" 
-                                    :href="`/domisili/cetak/${selectedData.id}`"
+                                    :href="`/kematian/cetak/${selectedData.id}`"
                                     class="bg-indigo-500 text-white font-bold py-2 px-4 rounded"
                                 >
                                     Cetak

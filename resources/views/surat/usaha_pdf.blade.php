@@ -101,27 +101,27 @@
             <table>
                 <tr>
                     <th>Nama</th>
-                    <td>{{ $data->nama }}</td>
+                    <td>: {{ $data->nama }}</td>
                 </tr>
                 <tr>
                     <th>Tempat/Tgl. Lahir</th>
-                    <td>{{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                    <td>: {{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
                     <th>NIK</th>
-                    <td>{{ $data->nik }}</td>
+                    <td>: {{ $data->nik }}</td>
                 </tr>
                 <tr>
                     <th>Jenis Kelamin</th>
-                    <td>{{ $data->jenis_kelamin }}</td>
+                    <td>: {{ $data->jenis_kelamin }}</td>
                 </tr>
                 <tr>
                     <th>Status</th>
-                    <td>{{ $data->status }}</td>
+                    <td>: {{ $data->status }}</td>
                 </tr>
                 <tr>
                     <th>Alamat</th>
-                    <td>{{ $data->alamat }}</td>
+                    <td>: {{ $data->alamat }}</td>
                 </tr>
             </table>
         </div>
@@ -131,19 +131,19 @@
             <table>
                 <tr>
                     <th>Usaha</th>
-                    <td>{{ $data->usaha }}</td>
+                    <td>: {{ $data->usaha }}</td>
                 </tr>
                 <tr>
                     <th>Lokasi</th>
-                    <td>{{ $data->lokasi }}</td>
+                    <td>: {{ $data->lokasi }}</td>
                 </tr>
                 <tr>
                     <th>Lama Usaha</th>
-                    <td>{{ $data->lama_usaha }}</td>
+                    <td>: {{ $data->lama_usaha }}</td>
                 </tr>
                 <tr>
                     <th>Keterangan</th>
-                    <td> Bahwa nama tersebut diatas benar-benar mempunyai {{ $data->usaha }}</td>
+                    <td>: Bahwa nama tersebut diatas benar-benar mempunyai {{ $data->usaha }}</td>
                 </tr>
             </table>
         </div>

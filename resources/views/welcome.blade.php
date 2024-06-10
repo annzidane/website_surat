@@ -10,6 +10,7 @@
     <title>Surat Desa</title>
     @vite('resources/css/app.css')
     <style>
+        /* CSS untuk #desa-sambeng dan #background-video */
         #desa-sambeng {
             position: relative;
         }
@@ -18,19 +19,23 @@
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             opacity: 0.9; /* Optional: adjust the opacity of the video */
         }
+
+        /* CSS untuk modal */
         .modal {
-        display: none;
-        position: fixed;
-        z-index: 999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .modal-content {
@@ -58,6 +63,7 @@
             cursor: pointer;
         }
 
+        /* General styling */
         h2 {
             text-align: center;
             margin-bottom: 20px;
@@ -70,6 +76,119 @@
 
         li {
             padding: 5px 0;
+        }
+
+        /* CSS untuk Navbar */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+            position: fixed;
+            width: 100%;
+            z-index: 20;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar .container {
+            max-width: 1280px; /* Tailwind's max-w-screen-xl */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .navbar .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Replacing space-x-3 */
+        }
+
+        .navbar .brand img {
+            height: 2rem;
+        }
+
+        .navbar .brand span {
+            font-size: 1.5rem; /* 2xl */
+            font-weight: 600; /* semibold */
+            white-space: nowrap;
+            color: #000000; /* Default text color */
+        }
+
+        .navbar .menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid #e5e7eb; /* Tailwind's gray-100 */
+            border-radius: 0.375rem; /* rounded-lg */
+            background-color: #f9fafb; /* Tailwind's gray-50 */
+        }
+
+        .navbar .menu.show {
+            display: flex;
+        }
+
+        .navbar .menu ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* Replacing space-y-4 */
+        }
+
+        .navbar .menu ul li a {
+            padding: 0.5rem 1rem;
+            color: #000000; /* Default text color */
+            text-decoration: none;
+            border-radius: 0.375rem; /* rounded */
+            background-color: #f9fafb; /* Tailwind's gray-50 */
+        }
+
+        .navbar .menu ul li a:hover {
+            background-color: #e5e7eb; /* Tailwind's gray-100 */
+            color: #1d4ed8; /* Tailwind's blue-700 */
+        }
+
+        .navbar .toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border: none;
+            background: none;
+            color: #6b7280; /* Tailwind's gray-500 */
+        }
+
+        .navbar .toggle-btn:hover {
+            background-color: #f3f4f6; /* Tailwind's gray-100 */
+            border-radius: 0.375rem; /* rounded */
+        }
+
+        @media (min-width: 768px) {
+            .navbar .menu {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem; /* Replacing space-x-8 */
+                background: none;
+                border: none;
+                padding: 0;
+                margin-top: 0;
+            }
+
+            .navbar .menu ul {
+                flex-direction: row;
+                gap: 0; /* Resetting gap */
+            }
+
+            .navbar .menu ul li a {
+                background: none;
+                padding: 0;
+                color: #1d4ed8; /* Tailwind's blue-700 */
+            }
+
+            .navbar .toggle-btn {
+                display: none;
+            }
         }
     </style>
 
@@ -452,7 +571,7 @@
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a class="hover:underline">Zidane Programmer™</a>. All Rights Reserved.</span>
         </div>
     </footer>
 
@@ -477,37 +596,48 @@
             });
         });
         function openModal(modalId) {
-    document.getElementById(modalId).style.display = "block";
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-}
-
-window.onclick = function(event) {
-    const modals = document.getElementsByClassName('modal');
-    for (let i = 0; i < modals.length; i++) {
-        if (event.target == modals[i]) {
-            modals[i].style.display = "none";
+            document.getElementById(modalId).style.display = "block";
         }
-    }
-}
 
-// Menambahkan listener khusus untuk button-modal
-document.querySelectorAll('button.modal-button').forEach(function(button) {
-    button.addEventListener('click', function() {
-        var modalId = this.getAttribute('data-modal-id');
-        openModal(modalId);
-    });
-});
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
 
-// Menambahkan listener khusus untuk button-pindah-halaman
-document.querySelectorAll('button.page-button').forEach(function(button) {
-    button.addEventListener('click', function() {
-        var url = this.getAttribute('data-url');
-        window.location.href = url;
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+
+        // Menambahkan listener khusus untuk button-modal
+        document.querySelectorAll('button.modal-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var modalId = this.getAttribute('data-modal-id');
+                openModal(modalId);
+            });
+        });
+
+        // Menambahkan listener khusus untuk button-pindah-halaman
+        document.querySelectorAll('button.page-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var url = this.getAttribute('data-url');
+                window.location.href = url;
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+        const menu = document.getElementById('navbar-sticky');
+
+        button.addEventListener('click', function () {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !isExpanded);
+            menu.classList.toggle('hidden');
+        });
     });
-});
 
     </script>
 </body>

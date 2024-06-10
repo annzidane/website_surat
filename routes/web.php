@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'checkusertype'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -77,49 +77,49 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 });
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkusertype'])->group(function () {
     Route::post('/kematian/store', [SuratController::class, 'kematianStore'])->name('kematian.store');
     Route::get('/kematian', [SuratController::class, 'kematian'])->name('kematian');
     Route::get('/kematian/index', [SuratController::class, 'index'])->name('kematian.index');
     Route::get('/kematian/cetak/{id}', [SuratController::class, 'cetak'])->name('kematian.cetak');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkusertype'])->group(function () {
     Route::post('/usaha/store', [UsahaController::class, 'usahaStore'])->name('usaha.store');
     Route::get('/usaha', [UsahaController::class, 'usaha'])->name('usaha');
     Route::get('/usaha/index', [UsahaController::class, 'index'])->name('usaha.index');
     Route::get('/usaha/cetak/{id}', [UsahaController::class, 'cetak'])->name('usaha.cetak');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth',  'checkusertype'])->group(function () {
     Route::post('/domisili/store', [DomisiliController::class, 'domisiliStore'])->name('domisili.store');
     Route::get('/domisili', [DomisiliController::class, 'domisili'])->name('domisili');
     Route::get('/domisili/index', [DomisiliController::class, 'index'])->name('domisili.index');
     Route::get('/domisili/cetak/{id}', [DomisiliController::class, 'cetak'])->name('domisili.cetak');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkusertype'])->group(function () {
     Route::post('/kelahiran/store', [KelahiranController::class, 'kelahiranStore'])->name('kelahiran.store');
     Route::get('/kelahiran', [KelahiranController::class, 'kelahiran'])->name('kelahiran');
     Route::get('/kelahiran/index', [KelahiranController::class, 'index'])->name('kelahiran.index');
     Route::get('/kelahiran/cetak/{id}', [KelahiranController::class, 'cetak'])->name('kelahiran.cetak');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkusertype'])->group(function () {
     Route::post('/pindah/store', [PindahController::class, 'pindahStore'])->name('pindah.store');
     Route::get('/pindah', [PindahController::class, 'pindah'])->name('pindah');
     Route::get('/pindah/index', [PindahController::class, 'index'])->name('pindah.index');
     Route::get('/pindah/cetak/{id}', [PindahController::class, 'cetak'])->name('pindah.cetak');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkusertype'])->group(function () {
     Route::post('/sktm/store', [SktmController::class, 'sktmStore'])->name('sktm.store');
     Route::get('/sktm', [SktmController::class, 'sktm'])->name('sktm');
     Route::get('/sktm/index', [SktmController::class, 'index'])->name('sktm.index');
     Route::get('/sktm/cetak/{id}', [SktmController::class, 'cetak'])->name('sktm.cetak');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'checkusertype'])->group(function () {
     Route::post('/nikah/store', [NikahController::class, 'nikahStore'])->name('nikah.store');
     Route::get('/nikah', [NikahController::class, 'nikah'])->name('nikah');
     Route::get('/nikah/index', [NikahController::class, 'index'])->name('nikah.index');

@@ -66,7 +66,7 @@
 
         th, td {
             text-align: left;
-            padding: 8px;
+            padding: 5px;
         }
 
         .signature {
@@ -93,45 +93,45 @@
                 DESA SAMBENG
             </div>
         </div>
-        <div class="title" >SURAT KETERANGAN TIDAK MAMPU</div>
+        <div class="title" >SURAT PENGANTAR NIKAH</div>
         <div class="nomor">NOMOR: {{ $data->nomor_surat }}</div>
 
         <div class="section">
             <div>Yang bertanda tangan dibawah ini Kepala Desa Sambeng, Kecamatan Bantarbolang, Kabupaten Pemalang menerangkan bahwa:</div>
             <table>
                 <tr>
-                    <th>Nama :</th>
-                    <td>{{ $data->nama }}</td>
+                    <th>Nama</th>
+                    <td>: {{ $data->nama }}</td>
                 </tr>
                 
                 <tr>
-                    <th>Tempat/Tgl. Lahir :</th>
-                    <td>{{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                    <th>Tempat/Tgl. Lahir</th>
+                    <td>: {{ $data->tempat_lahir }}, {{ \Carbon\Carbon::parse($data->tanggal_lahir)->translatedFormat('d F Y') }}</td>
                 </tr>
                 <tr>
-                    <th>Jenis Kelamin :</th>
-                    <td>{{ $data->jenis_kelamin }}</td>
+                    <th>Jenis Kelamin</th>
+                    <td>: {{ $data->jenis_kelamin }}</td>
                 </tr>
                 <tr>
-                    <th>Agama :</th>
-                    <td>{{ $data->agama }}</td>
+                    <th>Agama</th>
+                    <td>: {{ $data->agama }}</td>
                 </tr>
                 <tr>
-                    <th>Kewarganegaraan :</th>
-                    <td>{{ $data->kewarganegaraan }}</td>
+                    <th>Kewarganegaraan</th>
+                    <td>: {{ $data->kewarganegaraan }}</td>
                 </tr>
                 <tr>
-                    <th>Pekerjaan :</th>
-                    <td>{{ $data->pekerjaan }}</td>
+                    <th>Pekerjaan</th>
+                    <td>: {{ $data->pekerjaan }}</td>
                 </tr>
                 <tr>
-                    <th>Alamat :</th>
-                    <td>{{ $data->alamat }}</td>
+                    <th>Alamat</th>
+                    <td>: {{ $data->alamat }}</td>
                 </tr>
                 <tr>
-                    <th>Surat Bukti Diri :</th>
-                    <td>KTP No. {{ $data->nik }}</td>
-                    <td>KK No. {{ $data->nomor_kk }}</td>
+                    <th>Surat Bukti Diri</th>
+                    <td>: KTP No. {{ $data->nik }}</td>
+                    <td>: KK No. {{ $data->nomor_kk }}</td>
                 </tr>
             </table>
         </div>
