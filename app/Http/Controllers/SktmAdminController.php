@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sktm;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SktmAdminController extends Controller
 {
@@ -39,4 +40,13 @@ class SktmAdminController extends Controller
         // Redirect ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
+
+    public function cetak($id)
+    {
+        $data = Sktm::findOrFail($id);
+        $pdf = PDF::loadView('surat.sktm_pdf', compact('data'));
+
+        return $pdf->download('surat_sktm.pdf');
+    }
+    
 }

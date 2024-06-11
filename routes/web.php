@@ -50,18 +50,22 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('kematian', [HomeController::class, 'adminKematian']);
     Route::patch('kematian/update/{id}', [HomeController::class, 'updateStatus'])->name('kematian.updateStatus');
     Route::delete('kematian/destroy/{id}', [HomeController::class, 'destroy'])->name('kematian.destroy');
+    Route::get('/kematian/cetak/{id}', [HomeController::class, 'cetak'])->name('admin.kematian.cetak');
 
     Route::get('usaha', [UsahaAdminController::class, 'adminUsaha']);
     Route::patch('usaha/update/{id}', [UsahaAdminController::class, 'updateStatus'])->name('usaha.updateStatus');
     Route::delete('usaha/destroy/{id}', [UsahaAdminController::class, 'destroy'])->name('usaha.destroy');
+    Route::get('/usaha/cetak/{id}', [UsahaAdminController::class, 'cetak'])->name('admin.usaha.cetak');
     
     Route::get('domisili', [DomisiliAdminController::class, 'adminDomisili']);
     Route::patch('domisili/update/{id}', [DomisiliAdminController::class, 'updateStatus'])->name('domisili.updateStatus');
     Route::delete('domisili/destroy/{id}', [DomisiliAdminController::class, 'destroy'])->name('domisili.destroy');
+    Route::get('/domisili/cetak/{id}', [DomisiliAdminController::class, 'cetak'])->name('admin.domisili.cetak');
     
     Route::get('nikah', [NikahAdminController::class, 'adminNikah']);
     Route::patch('nikah/update/{id}', [NikahAdminController::class, 'updateStatus'])->name('nikah.updateStatus');
     Route::delete('nikah/destroy/{id}', [NikahAdminController::class, 'destroy'])->name('nikah.destroy');
+    Route::get('/nikah/cetak/{id}', [NikahAdminController::class, 'cetak'])->name('admin.nikah.cetak');
 
     Route::get('kelahiran', [KelahiranAdminController::class, 'adminKelahiran']);
     Route::patch('kelahiran/update/{id}', [KelahiranAdminController::class, 'updateStatus'])->name('kelahiran.updateStatus');
@@ -74,6 +78,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('sktm', [SktmAdminController::class, 'adminSktm']);
     Route::patch('sktm/update/{id}', [SktmAdminController::class, 'updateStatus'])->name('sktm.updateStatus');
     Route::delete('sktm/destroy/{id}', [SktmAdminController::class, 'destroy'])->name('sktm.destroy');
+    Route::get('/sktm/cetak/{id}', [SktmAdminController::class, 'cetak'])->name('admin.sktm.cetak');
 });
 
 

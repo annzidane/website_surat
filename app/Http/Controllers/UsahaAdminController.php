@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usaha;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UsahaAdminController extends Controller
 {
@@ -39,4 +40,13 @@ class UsahaAdminController extends Controller
         // Redirect ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
+
+    public function cetak($id)
+    {
+        $data = Usaha::findOrFail($id);
+        $pdf = PDF::loadView('surat.usaha_pdf', compact('data'));
+
+        return $pdf->download('surat_usaha.pdf');
+    }
+    
 }

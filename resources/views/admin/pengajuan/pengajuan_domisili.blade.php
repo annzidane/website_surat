@@ -122,7 +122,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                     @if($pengajuan->status == 'Selesai')
-                                                        <a href="{{ route('domisili.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
+                                                        <a href="{{ route('admin.domisili.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
                                                     @else
                                                         <button type="button" class="btn btn-primary" disabled>Cetak</button>
                                                     @endif

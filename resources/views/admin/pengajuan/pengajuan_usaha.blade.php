@@ -122,7 +122,9 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>Bukti Usaha</strong></label>
-                                                                <p><a href="{{ asset('storage/' . $pengajuan->bukti_usaha) }}" target="_blank">Lihat Bukti Usaha</a></p>
+                                                                @if($pengajuan->bukti_usaha)
+                                                                    <p><a href="{{ asset('storage/' . $pengajuan->bukti_usaha) }}" target="_blank">Lihat Bukti Usaha</a></p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,7 +132,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                     @if($pengajuan->status == 'Selesai')
-                                                        <a href="{{ route('usaha.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
+                                                        <a href="{{ route('admin.usaha.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
                                                     @else
                                                         <button type="button" class="btn btn-primary" disabled>Cetak</button>
                                                     @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Domisili;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DomisiliAdminController extends Controller
 {
@@ -40,4 +41,13 @@ class DomisiliAdminController extends Controller
         // Redirect ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
+
+    public function cetak($id)
+    {
+        $data = Domisili::findOrFail($id);
+        $pdf = PDF::loadView('surat.domisili_pdf', compact('data'));
+
+        return $pdf->download('surat_domisili.pdf');
+    }
+
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nikah;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class NikahAdminController extends Controller
 {
@@ -39,4 +40,12 @@ class NikahAdminController extends Controller
         // Redirect ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
+    public function cetak($id)
+    {
+        $data = Nikah::findOrFail($id);
+        $pdf = PDF::loadView('surat.nikah_pdf', compact('data'));
+
+        return $pdf->download('surat_nikah.pdf');
+    }
+    
 }

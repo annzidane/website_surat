@@ -145,6 +145,11 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    @if($pengajuan->status == 'Selesai')
+                                                        <a href="{{ route('admin.sktm.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
+                                                    @else
+                                                        <button type="button" class="btn btn-primary" disabled>Cetak</button>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

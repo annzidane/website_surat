@@ -36,6 +36,46 @@
     .btn-cetak-rekap i {
       margin-right: 10px;
     }
+
+    .animated-card {
+      opacity: 0;
+    }
+
+    .animated-card.animate__animated {
+      opacity: 1;
+    }
+
+    .animated-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .animated-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .animated-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .animated-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .animated-card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .animated-card:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .animated-card:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    .animated-card:nth-child(8) {
+      animation-delay: 0.8s;
+    }
   </style>
 
   <div class="container mt-4">
@@ -51,7 +91,7 @@
             </a>
           </div>
 
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-primary text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -67,7 +107,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-success text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -83,7 +123,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-warning text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -99,7 +139,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-danger text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -116,7 +156,7 @@
           </div>
 
           <!-- Kotak untuk Surat Keterangan Kelahiran -->
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-info text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -133,7 +173,7 @@
           </div>
 
           <!-- Kotak untuk Surat Keterangan Pindah Datang -->
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-secondary text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -150,7 +190,7 @@
           </div>
 
           <!-- Kotak untuk Surat Keterangan Tidak Mampu (SKTM) -->
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-dark text-white shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -167,7 +207,7 @@
           </div>
 
           <!-- Kotak untuk Surat Pengantar Nikah -->
-          <div class="col-lg-3 col-md-6 mb-4">
+          <div class="col-lg-3 col-md-6 mb-4 animated-card">
             <div class="card bg-light text-dark shadow">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -197,7 +237,8 @@
     </div>
   </div>
 
-  <!-- Include ApexCharts -->
+  <!-- Include Animate.css and ApexCharts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -253,6 +294,13 @@
 
       // Render chart
       chart.render();
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const animatedCards = document.querySelectorAll('.animated-card');
+      animatedCards.forEach(card => {
+        card.classList.add('animate__animated', 'animate__fadeInUp');
+      });
     });
   </script>
 @endsection

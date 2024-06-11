@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kematian;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
 {
@@ -41,4 +42,13 @@ class HomeController extends Controller
         // Redirect ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
+
+    public function cetak($id)
+    {
+        $data = Kematian::findOrFail($id);
+        $pdf = PDF::loadView('surat.kematian_pdf', compact('data'));
+
+        return $pdf->download('surat_kematian.pdf');
+    }
+    
 }

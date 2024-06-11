@@ -15,92 +15,120 @@ class PindahController extends Controller
         return view('surat.pindah');
     }
     public function pindahStore(Request $request)
-{
-    // Check if user is authenticated
-    $userId = auth()->id();
-    if (!$userId) {
-        return redirect('/login')->with('error', 'Please login to submit the form.');
-    }
+    {
+        // Check if user is authenticated
+        $userId = auth()->id();
+        if (!$userId) {
+            return redirect('/login')->with('error', 'Please login to submit the form.');
+        }
 
-    Log::info('User ID: ' . $userId . ' is trying to store pindah data.');
+        Log::info('User ID: ' . $userId . ' is trying to store pindah data.');
 
-    // Validate the request data
-    $validatedData = $request->validate([
-        // Data Daerah Asal
-        'nomor_kk' => 'required|string|max:255',
-        'nama_kepala_keluarga' => 'required|string|max:255',
-        'alamat' => 'required|string',
-        'kode_pos' => 'nullable|string|max:10',
-        'telepon' => 'nullable|string|max:15',
-        'nik_pemohon' => 'required|string|max:255',
-        'nama_lengkap_pemohon' => 'required|string|max:255',
-        // Data Daerah Tujuan
-        'status_kk' => 'required|in:Numpang KK,Membuat KK Baru,Nomor KK Tetap',
-        'nomor_kk_tujuan' => 'required|string|max:255',
-        'nik_kepala_keluarga_tujuan' => 'required|string|max:255',
-        'nama_kepala_keluarga_tujuan' => 'required|string|max:255',
-        'tanggal_kedatangan' => 'required|date',
-        'alamat_tujuan' => 'required|string',
-        // Anggota Keluarga yang Datang
-        'nik_keluarga_datang' => 'required|string|max:255',
-        'nama_keluarga_datang' => 'required|string|max:255',
-        'masa_berlaku_ktp' => 'nullable|date',
-        'shdk' => 'required|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
-        // Kolom untuk anggota keluarga kedua dan seterusnya (nullable)
-        'nik_keluarga_datang2' => 'nullable|string|max:255',
-        'nama_keluarga_datang2' => 'nullable|string|max:255',
-        'masa_berlaku_ktp2' => 'nullable|date',
-        'shdk2' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
-        'nik_keluarga_datang3' => 'nullable|string|max:255',
-        'nama_keluarga_datang3' => 'nullable|string|max:255',
-        'masa_berlaku_ktp3' => 'nullable|date',
-        'shdk3' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
-        'nik_keluarga_datang4' => 'nullable|string|max:255',
-        'nama_keluarga_datang4' => 'nullable|string|max:255',
-        'masa_berlaku_ktp4' => 'nullable|date',
-        'shdk4' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
-        'nik_keluarga_datang5' => 'nullable|string|max:255',
-        'nama_keluarga_datang5' => 'nullable|string|max:255',
-        'masa_berlaku_ktp5' => 'nullable|date',
-        'shdk5' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
-        'nik_keluarga_datang6' => 'nullable|string|max:255',
-        'nama_keluarga_datang6' => 'nullable|string|max:255',
-        'masa_berlaku_ktp6' => 'nullable|date',
-        'shdk6' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
-        // Berkas persyaratan
-        'berkas_kk' => 'required|file|max:10240',
-        'berkas_pbb' => 'required|file|max:10240',
-        'berkas_ktp' => 'required|file|max:10240',
-        'berkas_ktp2' => 'nullable|file|max:10240',
-        'berkas_ktp3' => 'nullable|file|max:10240',
-        'berkas_ktp4' => 'nullable|file|max:10240',
-        'berkas_ktp5' => 'nullable|file|max:10240',
-        'berkas_ktp6' => 'nullable|file|max:10240',
-    ]);
+        // Validate the request data
+        $validatedData = $request->validate([
+            // Data Daerah Asal
+            'nomor_kk' => 'required|string|max:255',
+            'nama_kepala_keluarga' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'kode_pos' => 'nullable|string|max:10',
+            'telepon' => 'nullable|string|max:15',
+            'nik_pemohon' => 'required|string|max:255',
+            'nama_lengkap_pemohon' => 'required|string|max:255',
+            // Data Daerah Tujuan
+            'status_kk' => 'required|in:Numpang KK,Membuat KK Baru,Nomor KK Tetap',
+            'nomor_kk_tujuan' => 'required|string|max:255',
+            'nik_kepala_keluarga_tujuan' => 'required|string|max:255',
+            'nama_kepala_keluarga_tujuan' => 'required|string|max:255',
+            'tanggal_kedatangan' => 'required|date',
+            'alamat_tujuan' => 'required|string',
+            // Anggota Keluarga yang Datang
+            'nik_keluarga_datang' => 'required|string|max:255',
+            'nama_keluarga_datang' => 'required|string|max:255',
+            'masa_berlaku_ktp' => 'nullable|date',
+            'shdk' => 'required|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
+            // Kolom untuk anggota keluarga kedua dan seterusnya (nullable)
+            'nik_keluarga_datang2' => 'nullable|string|max:255',
+            'nama_keluarga_datang2' => 'nullable|string|max:255',
+            'masa_berlaku_ktp2' => 'nullable|date',
+            'shdk2' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
+            'nik_keluarga_datang3' => 'nullable|string|max:255',
+            'nama_keluarga_datang3' => 'nullable|string|max:255',
+            'masa_berlaku_ktp3' => 'nullable|date',
+            'shdk3' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
+            'nik_keluarga_datang4' => 'nullable|string|max:255',
+            'nama_keluarga_datang4' => 'nullable|string|max:255',
+            'masa_berlaku_ktp4' => 'nullable|date',
+            'shdk4' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
+            'nik_keluarga_datang5' => 'nullable|string|max:255',
+            'nama_keluarga_datang5' => 'nullable|string|max:255',
+            'masa_berlaku_ktp5' => 'nullable|date',
+            'shdk5' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
+            'nik_keluarga_datang6' => 'nullable|string|max:255',
+            'nama_keluarga_datang6' => 'nullable|string|max:255',
+            'masa_berlaku_ktp6' => 'nullable|date',
+            'shdk6' => 'nullable|in:Kepala Keluarga,Suami,Istri,Anak,Menantu,Cucu,Orang Tua,Mertua,Famili Lain,Pembantu,Lainnya',
+            // Berkas persyaratan
+            'berkas_kk' => 'required|file|max:10240',
+            'berkas_pbb' => 'required|file|max:10240',
+            'berkas_ktp' => 'required|file|max:10240',
+            'berkas_ktp2' => 'nullable|file|max:10240',
+            'berkas_ktp3' => 'nullable|file|max:10240',
+            'berkas_ktp4' => 'nullable|file|max:10240',
+            'berkas_ktp5' => 'nullable|file|max:10240',
+            'berkas_ktp6' => 'nullable|file|max:10240',
+        ]);
 
         Log::info('Validation passed for user ID: ' . $userId);
 
-        // Function to handle file upload and securing file names
-        function secureFileUpload($file) {
-            if ($file) {
-                $namaFile = Str::uuid() . '.' . $file->getClientOriginalExtension();
-                $path = $file->storeAs('berkas_persyaratan', $namaFile, 'public');
-                return $path;
-            }
-            return null;
+        // Handle file uploads with unique names
+        $berkasKK = $request->file('berkas_kk');
+        $namaFileKK = Str::uuid() . '.' . $berkasKK->getClientOriginalExtension();
+        $pathKK = $berkasKK->storeAs('berkas_kk', $namaFileKK, 'public');
+
+        $berkasPBB = $request->file('berkas_pbb');
+        $namaFilePBB = Str::uuid() . '.' . $berkasPBB->getClientOriginalExtension();
+        $pathPBB = $berkasPBB->storeAs('berkas_pbb', $namaFilePBB, 'public');
+
+        $berkasKTP = $request->file('berkas_ktp');
+        $namaFileKTP = Str::uuid() . '.' . $berkasKTP->getClientOriginalExtension();
+        $pathKTP = $berkasKTP->storeAs('berkas_ktp', $namaFileKTP, 'public');
+
+        $pathKTP2 = null;
+        if ($request->hasFile('berkas_ktp2')) {
+            $berkasKTP2 = $request->file('berkas_ktp2');
+            $namaFileKTP2 = Str::uuid() . '.' . $berkasKTP2->getClientOriginalExtension();
+            $pathKTP2 = $berkasKTP2->storeAs('berkas_ktp', $namaFileKTP2, 'public');
         }
 
-        // Handle the file uploads
-        $berkasKkPath = secureFileUpload($request->file('berkas_kk'));
-        $berkasPbbPath = secureFileUpload($request->file('berkas_pbb'));
-        $berkasKtpPath = secureFileUpload($request->file('berkas_ktp'));
-        $berkasKtp2Path = secureFileUpload($request->file('berkas_ktp2'));
-        $berkasKtp3Path = secureFileUpload($request->file('berkas_ktp3'));
-        $berkasKtp4Path = secureFileUpload($request->file('berkas_ktp4'));
-        $berkasKtp5Path = secureFileUpload($request->file('berkas_ktp5'));
-        $berkasKtp6Path = secureFileUpload($request->file('berkas_ktp6'));
+        $pathKTP3 = null;
+        if ($request->hasFile('berkas_ktp3')) {
+            $berkasKTP3 = $request->file('berkas_ktp3');
+            $namaFileKTP3 = Str::uuid() . '.' . $berkasKTP3->getClientOriginalExtension();
+            $pathKTP3 = $berkasKTP3->storeAs('berkas_ktp', $namaFileKTP3, 'public');
+        }
 
-        Log::info('Files uploaded by user ID: ' . $userId);
+        $pathKTP4 = null;
+        if ($request->hasFile('berkas_ktp4')) {
+            $berkasKTP4 = $request->file('berkas_ktp4');
+            $namaFileKTP4 = Str::uuid() . '.' . $berkasKTP4->getClientOriginalExtension();
+            $pathKTP4 = $berkasKTP4->storeAs('berkas_ktp', $namaFileKTP4, 'public');
+        }
+
+        $pathKTP5 = null;
+        if ($request->hasFile('berkas_ktp5')) {
+            $berkasKTP5 = $request->file('berkas_ktp5');
+            $namaFileKTP5 = Str::uuid() . '.' . $berkasKTP5->getClientOriginalExtension();
+            $pathKTP5 = $berkasKTP5->storeAs('berkas_ktp', $namaFileKTP5, 'public');
+        }
+
+        $pathKTP6 = null;
+        if ($request->hasFile('berkas_ktp6')) {
+            $berkasKTP6 = $request->file('berkas_ktp6');
+            $namaFileKTP6 = Str::uuid() . '.' . $berkasKTP6->getClientOriginalExtension();
+            $pathKTP6 = $berkasKTP6->storeAs('berkas_ktp', $namaFileKTP6, 'public');
+        }
+
+        Log::info('Files uploaded by user ID: ' . $userId . ' to paths: KTP - ' . $pathKTP . ', KK - ' . $pathKK . ', PBB - ' . $pathPBB . ', KTP2 - ' . $pathKTP2 . ', KTP3 - ' . $pathKTP3 . ', KTP4 - ' . $pathKTP4 . ', KTP5 - ' . $pathKTP5 . ', KTP6 - ' . $pathKTP6);
 
         // Store the data into the database
         $pindah = new Pindah();
@@ -147,14 +175,14 @@ class PindahController extends Controller
         $pindah->masa_berlaku_ktp6 = $request->masa_berlaku_ktp6;
         $pindah->shdk6 = $request->shdk6;
         // Berkas persyaratan
-        $pindah->berkas_kk = $berkasKkPath;
-        $pindah->berkas_pbb = $berkasPbbPath;
-        $pindah->berkas_ktp = $berkasKtpPath;
-        $pindah->berkas_ktp2 = $berkasKtp2Path;
-        $pindah->berkas_ktp3 = $berkasKtp3Path;
-        $pindah->berkas_ktp4 = $berkasKtp4Path;
-        $pindah->berkas_ktp5 = $berkasKtp5Path;
-        $pindah->berkas_ktp6 = $berkasKtp6Path;
+        $pindah->berkas_kk = $pathKK;
+        $pindah->berkas_pbb = $pathPBB;
+        $pindah->berkas_ktp = $pathKTP;
+        $pindah->berkas_ktp2 = $pathKTP2;
+        $pindah->berkas_ktp3 = $pathKTP3;
+        $pindah->berkas_ktp4 = $pathKTP4;
+        $pindah->berkas_ktp5 = $pathKTP5;
+        $pindah->berkas_ktp6 = $pathKTP6;
         // Status dan keterangan default
         $pindah->status = 'Data Sedang Diperiksa';
         $pindah->keterangan = 'Menunggu Konfirmasi';

@@ -221,17 +221,17 @@
                             <label for="shdk2" class="block font-medium text-gray-700">SHDK </label>
                             <select id="shdk2" name="shdk2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
                                 <option value="" disabled selected>-- Pilih SHDK --</option>
-                                <option value="kepala keluarga">1. Kepala Keluarga</option>
-                                <option value="suami">2. Suami</option>
-                                <option value="istri">3. Istri</option>
-                                <option value="anak">4. Anak</option>
-                                <option value="menantu">5. Menantu</option>
-                                <option value="cucu">6. Cucu</option>
-                                <option value="orang tua">7. Orang Tua</option>
-                                <option value="mertua">8. Mertua</option>
-                                <option value="famili lainnya">9. Famili Lainnya</option>
-                                <option value="pembantu">10. Pembantu</option>
-                                <option value="lainnya">11. Lainnya</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Menantu">Menantu</option>
+                                <option value="Cucu">Cucu</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Mertua">Mertua</option>
+                                <option value="Famili Lain">Famili Lain</option>
+                                <option value="Pembantu">Pembantu</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             @error('shdk2')
                                 <span class="text-red-600">{{ $message }}</span>
@@ -284,17 +284,17 @@
                             <label for="shdk3" class="block font-medium text-gray-700">SHDK </label>
                             <select id="shdk3" name="shdk3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
                                 <option value="" disabled selected>-- Pilih SHDK --</option>
-                                <option value="kepala keluarga">1. Kepala Keluarga</option>
-                                <option value="suami">2. Suami</option>
-                                <option value="istri">3. Istri</option>
-                                <option value="anak">4. Anak</option>
-                                <option value="menantu">5. Menantu</option>
-                                <option value="cucu">6. Cucu</option>
-                                <option value="orang tua">7. Orang Tua</option>
-                                <option value="mertua">8. Mertua</option>
-                                <option value="famili lainnya">9. Famili Lainnya</option>
-                                <option value="pembantu">10. Pembantu</option>
-                                <option value="lainnya">11. Lainnya</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Menantu">Menantu</option>
+                                <option value="Cucu">Cucu</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Mertua">Mertua</option>
+                                <option value="Famili Lain">Famili Lain</option>
+                                <option value="Pembantu">Pembantu</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             @error('shdk3')
                                 <span class="text-red-600">{{ $message }}</span>
@@ -342,17 +342,17 @@
                             <label for="shdk4" class="block font-medium text-gray-700">SHDK </label>
                             <select id="shdk4" name="shdk4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
                                 <option value="" disabled selected>-- Pilih SHDK --</option>
-                                <option value="kepala keluarga">1. Kepala Keluarga</option>
-                                <option value="suami">2. Suami</option>
-                                <option value="istri">3. Istri</option>
-                                <option value="anak">4. Anak</option>
-                                <option value="menantu">5. Menantu</option>
-                                <option value="cucu">6. Cucu</option>
-                                <option value="orang tua">7. Orang Tua</option>
-                                <option value="mertua">8. Mertua</option>
-                                <option value="famili lainnya">9. Famili Lainnya</option>
-                                <option value="pembantu">10. Pembantu</option>
-                                <option value="lainnya">11. Lainnya</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Menantu">Menantu</option>
+                                <option value="Cucu">Cucu</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Mertua">Mertua</option>
+                                <option value="Famili Lain">Famili Lain</option>
+                                <option value="Pembantu">Pembantu</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             @error('shdk4')
                                 <span class="text-red-600">{{ $message }}</span>
@@ -405,17 +405,17 @@
                             <label for="shdk5" class="block font-medium text-gray-700">SHDK </label>
                             <select id="shdk5" name="shdk5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
                                 <option value="" disabled selected>-- Pilih SHDK --</option>
-                                <option value="kepala keluarga">1. Kepala Keluarga</option>
-                                <option value="suami">2. Suami</option>
-                                <option value="istri">3. Istri</option>
-                                <option value="anak">4. Anak</option>
-                                <option value="menantu">5. Menantu</option>
-                                <option value="cucu">6. Cucu</option>
-                                <option value="orang tua">7. Orang Tua</option>
-                                <option value="mertua">8. Mertua</option>
-                                <option value="famili lainnya">9. Famili Lainnya</option>
-                                <option value="pembantu">10. Pembantu</option>
-                                <option value="lainnya">11. Lainnya</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Menantu">Menantu</option>
+                                <option value="Cucu">Cucu</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Mertua">Mertua</option>
+                                <option value="Famili Lain">Famili Lain</option>
+                                <option value="Pembantu">Pembantu</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             @error('shdk5')
                                 <span class="text-red-600">{{ $message }}</span>
@@ -462,17 +462,17 @@
                             <label for="shdk6" class="block font-medium text-gray-700">SHDK </label>
                             <select id="shdk6" name="shdk6" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
                                 <option value="" disabled selected>-- Pilih SHDK --</option>
-                                <option value="kepala keluarga">1. Kepala Keluarga</option>
-                                <option value="suami">2. Suami</option>
-                                <option value="istri">3. Istri</option>
-                                <option value="anak">4. Anak</option>
-                                <option value="menantu">5. Menantu</option>
-                                <option value="cucu">6. Cucu</option>
-                                <option value="orang tua">7. Orang Tua</option>
-                                <option value="mertua">8. Mertua</option>
-                                <option value="famili lainnya">9. Famili Lainnya</option>
-                                <option value="pembantu">10. Pembantu</option>
-                                <option value="lainnya">11. Lainnya</option>
+                                <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Menantu">Menantu</option>
+                                <option value="Cucu">Cucu</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Mertua">Mertua</option>
+                                <option value="Famili Lain">Famili Lain</option>
+                                <option value="Pembantu">Pembantu</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             @error('shdk6')
                                 <span class="text-red-600">{{ $message }}</span>

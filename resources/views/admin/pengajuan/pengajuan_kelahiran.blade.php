@@ -165,6 +165,8 @@
                                                                 <label class="form-label"><strong>Berkas KTP Ibu</strong></label>
                                                                 <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp_ibu) }}" target="_blank">Lihat Berkas</a></p>
                                                             </div>
+
+                                                            <hr>
                                                             <h6 class="fw-bold text-primary mb-2">Ayah</h6>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Ayah</strong></label>
@@ -198,6 +200,83 @@
                                                                 <label class="form-label"><strong>Kebangsaan Ayah</strong></label>
                                                                 <p>{{ $pengajuan->kebangsaan_ayah }}</p>
                                                             </div>
+
+                                                            @if($pengajuan->nik_pelapor)
+                                                            <hr>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>NIK Pelapor</strong></label>
+                                                                <p>{{ $pengajuan->nik_pelapor }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Nama Pelapor</strong></label>
+                                                                <p>{{ $pengajuan->nama_pelapor }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Umur Pelapor</strong></label>
+                                                                <p>{{ $pengajuan->umur_pelapor }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Jenis Kelamin Pelapor</strong></label>
+                                                                <p>{{ $pengajuan->jenis_kelamin_pelapor }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Pekerjaan Pelapor</strong></label>
+                                                                <p>{{ $pengajuan->pekerjaan_pelapor }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Alamat Pelapor</strong></label>
+                                                                <p>{{ $pengajuan->alamat_pelapor }}</p>
+                                                            </div>
+                                                            @endif
+
+                                                            @if($pengajuan->nik_saksi1)
+                                                            <hr>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>NIK Saksi 1</strong></label>
+                                                                <p>{{ $pengajuan->nik_saksi1 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Nama Saksi 1</strong></label>
+                                                                <p>{{ $pengajuan->nama_saksi1 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Umur Saksi 1</strong></label>
+                                                                <p>{{ $pengajuan->umur_saksi1 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Pekerjaan Saksi 1</strong></label>
+                                                                <p>{{ $pengajuan->pekerjaan_saksi1 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Alamat Saksi 1</strong></label>
+                                                                <p>{{ $pengajuan->alamat_saksi1 }}</p>
+                                                            </div>
+                                                            @endif
+
+                                                            @if($pengajuan->nik_saksi2)
+                                                            <hr>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>NIK Saksi 2</strong></label>
+                                                                <p>{{ $pengajuan->nik_saksi2 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Nama Saksi 2</strong></label>
+                                                                <p>{{ $pengajuan->nama_saksi2 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Umur Saksi 2</strong></label>
+                                                                <p>{{ $pengajuan->umur_saksi2 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Pekerjaan Saksi 2</strong></label>
+                                                                <p>{{ $pengajuan->pekerjaan_saksi2 }}</p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Alamat Saksi 2</strong></label>
+                                                                <p>{{ $pengajuan->alamat_saksi2 }}</p>
+                                                            </div>
+                                                            @endif
+                                                            
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>Berkas KTP Ayah</strong></label>
                                                                 <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp_ayah) }}" target="_blank">Lihat Berkas</a></p>
@@ -207,24 +286,17 @@
                                                                 <label class="form-label"><strong>Berkas KK</strong></label>
                                                                 <p><a href="{{ asset('storage/' . $pengajuan->berkas_kk) }}" target="_blank">Lihat Berkas</a></p>
                                                             </div>
-                                                            
                                                                 <div class="mb-3">
                                                                     <label class="form-label"><strong>Surat Keterangan Lahir</strong></label>
                                                                     @if($pengajuan->surat_keterangan_lahir)
                                                                         <p><a href="{{ asset('storage/' . $pengajuan->surat_keterangan_lahir) }}" target="_blank">Lihat Berkas</a></p>
                                                                     @endif
                                                                 </div>
-                                                        
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    @if($pengajuan->status == 'Selesai')
-                                                        <a href="{{ route('kelahiran.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
-                                                    @else
-                                                        <button type="button" class="btn btn-primary" disabled>Cetak</button>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

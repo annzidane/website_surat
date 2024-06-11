@@ -101,8 +101,10 @@
                                                                 <label class="form-label"><strong>Nama Lengkap Pemohon</strong></label>
                                                                 <p>{{ $pengajuan->nama_lengkap_pemohon }}</p>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
+
+                                                            <!-- Garis horizontal pemisah -->
+                                                            <hr>
+
                                                             <h6 class="fw-bold text-primary mb-3">Informasi Daerah Tujuan</h6>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>Status KK</strong></label>
@@ -128,6 +130,8 @@
                                                                 <label class="form-label"><strong>Alamat Tujuan</strong></label>
                                                                 <p>{{ $pengajuan->alamat_tujuan }}</p>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <h6 class="fw-bold text-primary mb-3">Informasi Anggota Keluarga yang Datang</h6>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Keluarga Datang</strong></label>
@@ -145,8 +149,14 @@
                                                                 <label class="form-label"><strong>SHDK</strong></label>
                                                                 <p>{{ $pengajuan->shdk }}</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>KTP </strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
+
                                                             <!-- Kolom untuk anggota keluarga kedua dan seterusnya -->
                                                             @if($pengajuan->nik_keluarga_datang2)
+                                                            <hr>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Keluarga Datang 2</strong></label>
                                                                 <p>{{ $pengajuan->nik_keluarga_datang2 }}</p>
@@ -163,8 +173,15 @@
                                                                 <label class="form-label"><strong>SHDK 2</strong></label>
                                                                 <p>{{ $pengajuan->shdk2 }}</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>KTP 2</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp2) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
                                                             @endif
+
+                                                            
                                                             @if($pengajuan->nik_keluarga_datang3)
+                                                            <hr>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Keluarga Datang 3</strong></label>
                                                                 <p>{{ $pengajuan->nik_keluarga_datang3 }}</p>
@@ -181,8 +198,15 @@
                                                                 <label class="form-label"><strong>SHDK 3</strong></label>
                                                                 <p>{{ $pengajuan->shdk3 }}</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>KTP 3</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp3) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
                                                             @endif
+
+                                                            
                                                             @if($pengajuan->nik_keluarga_datang4)
+                                                            <hr>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Keluarga Datang 4</strong></label>
                                                                 <p>{{ $pengajuan->nik_keluarga_datang4 }}</p>
@@ -199,8 +223,15 @@
                                                                 <label class="form-label"><strong>SHDK 4</strong></label>
                                                                 <p>{{ $pengajuan->shdk4 }}</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>KTP 4</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp4) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
                                                             @endif
+
+                                                            
                                                             @if($pengajuan->nik_keluarga_datang5)
+                                                            <hr>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Keluarga Datang 5</strong></label>
                                                                 <p>{{ $pengajuan->nik_keluarga_datang5 }}</p>
@@ -217,8 +248,14 @@
                                                                 <label class="form-label"><strong>SHDK 5</strong></label>
                                                                 <p>{{ $pengajuan->shdk5 }}</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>KTP 5</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp5) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
                                                             @endif
+
                                                             @if($pengajuan->nik_keluarga_datang6)
+                                                            <hr>
                                                             <div class="mb-3">
                                                                 <label class="form-label"><strong>NIK Keluarga Datang 6</strong></label>
                                                                 <p>{{ $pengajuan->nik_keluarga_datang6 }}</p>
@@ -235,22 +272,25 @@
                                                                 <label class="form-label"><strong>SHDK 6</strong></label>
                                                                 <p>{{ $pengajuan->shdk6 }}</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>KTP 6</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_ktp6) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
                                                             @endif
                                                             <h6 class="fw-bold text-primary mb-3">Berkas Persyaratan</h6>
                                                             <div class="mb-3">
-                                                                <label class="form-label"><strong>Berkas Persyaratan</strong></label>
-                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_persyaratan) }}" target="_blank">Lihat Berkas</a></p>
+                                                                <label class="form-label"><strong>Kartu Keluarga :</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_kk) }}" target="_blank">Lihat Berkas</a></p>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>Berkas Pajak Bumi Bangunan</strong></label>
+                                                                <p><a href="{{ asset('storage/' . $pengajuan->berkas_pbb) }}" target="_blank">Lihat Berkas</a></p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    @if($pengajuan->status == 'Selesai')
-                                                        <a href="{{ route('pindah.cetak', $pengajuan->id) }}" class="btn btn-primary">Cetak</a>
-                                                    @else
-                                                        <button type="button" class="btn btn-primary" disabled>Cetak</button>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
